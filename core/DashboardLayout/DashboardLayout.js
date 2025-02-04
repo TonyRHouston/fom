@@ -88,7 +88,7 @@ function DashboardLayout(props) {
       return () => clearTimeout(drawerWidthTransitionTimeout);
     }
     setIsNavigationFullyExpanded(false);
-    return () => { };
+    return () => {};
   }, [isNavigationExpanded, theme]);
   const selectedItemIdRef = React.useRef('');
   const handleSetNavigationExpanded = React.useCallback(newExpanded => () => {
@@ -129,10 +129,8 @@ function DashboardLayout(props) {
   const ToolbarActionsSlot = slots?.toolbarActions ?? ToolbarActions;
   const ToolbarAccountSlot = slots?.toolbarAccount ?? Account;
   const SidebarFooterSlot = slots?.sidebarFooter ?? null;
-
-  //////////////////////
   const getDrawerContent = React.useCallback((isMini, viewport) => /*#__PURE__*/_jsxs(React.Fragment, {
-    children: [(_Toolbar = /*#__PURE__*/_jsx(Toolbar, {})), /*#__PURE__*/_jsxs(Box, {
+    children: [_Toolbar || (_Toolbar = /*#__PURE__*/_jsx(Toolbar, {})), /*#__PURE__*/_jsxs(Box, {
       component: "nav",
       "aria-label": `${viewport.charAt(0).toUpperCase()}${viewport.slice(1)}`,
       sx: {
@@ -144,8 +142,7 @@ function DashboardLayout(props) {
         pt: navigation[0]?.kind === 'header' && !isMini ? 0 : 2,
         ...(hasDrawerTransitions ? getDrawerSxTransitionMixin(isNavigationFullyExpanded, 'padding') : {})
       },
-      children: [        getMenuIcon(isDesktopNavigationExpanded),
-        /*#__PURE__*/_jsx(DashboardSidebarSubNavigation, {
+      children: [/*#__PURE__*/_jsx(DashboardSidebarSubNavigation, {
         subNavigation: navigation,
         onLinkClick: handleNavigationLinkClick,
         isMini: isMini,
@@ -157,12 +154,7 @@ function DashboardLayout(props) {
         ...slotProps?.sidebarFooter
       }) : null]
     })]
-
   }), [SidebarFooterSlot, handleNavigationLinkClick, hasDrawerTransitions, isNavigationFullyExpanded, navigation, slotProps?.sidebarFooter]);
-
-
-
-
   const getDrawerSharedSx = React.useCallback((isMini, isTemporary) => {
     const drawerWidth = isMini ? 64 : sidebarExpandedWidth;
     return {
@@ -182,9 +174,6 @@ function DashboardLayout(props) {
       }
     };
   }, [isNavigationExpanded, sidebarExpandedWidth]);
-
-
-
   const layoutRef = React.useRef(null);
   return /*#__PURE__*/_jsxs(Box, {
     ref: layoutRef,
@@ -244,16 +233,16 @@ function DashboardLayout(props) {
             }) : null, slots?.appTitle ? /*#__PURE__*/_jsx(slots.appTitle, {
               ...slotProps?.appTitle
             }) :
-              /*#__PURE__*/
-              /* Hierarchy of application of `branding`
-               * 1. Branding prop passed in the `slotProps.appTitle`
-               * 2. Branding prop passed to the `DashboardLayout`
-               * 3. Branding prop passed to the `AppProvider`
-               */
-              _jsx(AppTitle, {
-                branding: branding,
-                ...slotProps?.appTitle
-              })]
+            /*#__PURE__*/
+            /* Hierarchy of application of `branding`
+             * 1. Branding prop passed in the `slotProps.appTitle`
+             * 2. Branding prop passed to the `DashboardLayout`
+             * 3. Branding prop passed to the `AppProvider`
+             */
+            _jsx(AppTitle, {
+              branding: branding,
+              ...slotProps?.appTitle
+            })]
           }), /*#__PURE__*/_jsxs(Stack, {
             direction: "row",
             alignItems: "center",
@@ -269,8 +258,7 @@ function DashboardLayout(props) {
           })]
         })
       })
-    }),
-     !hideNavigation ? /*#__PURE__*/_jsxs(React.Fragment, {
+    }), !hideNavigation ? /*#__PURE__*/_jsxs(React.Fragment, {
       children: [/*#__PURE__*/_jsx(Drawer, {
         container: layoutRef.current,
         variant: "temporary",
@@ -310,17 +298,28 @@ function DashboardLayout(props) {
         },
         children: getDrawerContent(isDesktopMini, 'desktop')
       })]
-    }) : null,  /*#__PURE__*/_jsx(Box, {
-      component: "main",
+    }) : null, /*#__PURE__*/_jsxs(Box, {
       sx: {
         display: 'flex',
         flexDirection: 'column',
         flex: 1,
-        overflow: 'auto'
+        minWidth: 0
       },
-      children: children
+      children: [/*#__PURE__*/_jsx(Toolbar, {
+        sx: {
+          displayPrint: 'none'
+        }
+      }), /*#__PURE__*/_jsx(Box, {
+        component: "main",
+        sx: {
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 1,
+          overflow: 'auto'
+        },
+        children: children
+      })]
     })]
-
   });
 }
 process.env.NODE_ENV !== "production" ? DashboardLayout.propTypes /* remove-proptypes */ = {
