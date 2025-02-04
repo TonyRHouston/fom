@@ -141,8 +141,8 @@ function DashboardLayout(props) {
   const getMenuIcon = React.useCallback(() => {
     return /*#__PURE__*/ _jsx(IconButton, {
       onClick: toggleNavigationExpanded,
-      children: _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {})),
-      flex:false
+      children: _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {
+      })),
     });
   }, [toggleNavigationExpanded]);
   const hasDrawerTransitions =
@@ -186,26 +186,28 @@ function DashboardLayout(props) {
           }),
 
           /*#__PURE__*/ _jsxs(Box, {
+            
             sx: {
               height: "100%",
               display: "flex",
               flexDirection: "row-reverse",
               justifyContent: "space-between",
+              alignItems:'flex-end',
               
               overflow: "auto",
               pt: navigation[0]?.kind === "header" && !isMini ? 0 : 2,
               ...(hasDrawerTransitions
                 ? getDrawerSxTransitionMixin(
                     isNavigationFullyExpanded,
-                    "padding"
+                    "padding",
                   )
                 : {}),
             },
             children: [
                /*#__PURE__*/ _jsx(SidebarFooterSlot, {
-                    mini: isMini,
-                    ...slotProps?.sidebarFooter,
-                  }), menu(),
+                mini: isMini,
+                ...slotProps?.sidebarFooter,
+              }), menu()
             ],
           }),
         ],
@@ -266,7 +268,7 @@ function DashboardLayout(props) {
       !hideNavigation
         ? /*#__PURE__*/ _jsxs(React.Fragment, {
             children: [
-              menu(),
+           
               /*#__PURE__*/ _jsx(Drawer, {
                 container: layoutRef.current,
                 variant: "temporary",
