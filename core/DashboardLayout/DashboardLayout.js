@@ -162,7 +162,6 @@ function DashboardLayout(props) {
     (isMini, viewport) =>
       /*#__PURE__*/ _jsxs(React.Fragment, {
         children: [
-          _Toolbar || (_Toolbar = /*#__PURE__*/ _jsx(Toolbar, {})),
           /*#__PURE__*/ _jsxs(Box, {
             component: "nav",
             "aria-label": `${viewport.charAt(0).toUpperCase()}${viewport.slice(1)}`,
@@ -180,7 +179,12 @@ function DashboardLayout(props) {
                   )
                 : {}),
             },
-            children: [
+            children: [ 
+              /*#__PURE__*/ _jsx(ToolbarAccountSlot, {
+              ...slotProps?.toolbarAccount,
+            }),//added
+
+
               /*#__PURE__*/ _jsx(DashboardSidebarSubNavigation, {
                 subNavigation: navigation,
                 onLinkClick: handleNavigationLinkClick,
@@ -251,62 +255,7 @@ function DashboardLayout(props) {
         sx: {
           displayPrint: "none",
         },
-        children: /*#__PURE__*/ _jsx(Toolbar, {
-          sx: {
-            backgroundColor: "inherit",
-            mx: {
-
-              xs: -0.75,
-              sm: -1.5,
-            },
-          },
-          children: /*#__PURE__*/ _jsxs(Stack, {
-            direction: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            sx: {
-              flexWrap: "wrap",
-              width: "100%",
-            },
-            children: [
-              /*#__PURE__*/ _jsxs(Stack, {
-                direction: "row",
-                children: [menu(),
-                  slots?.appTitle
-                    ? /*#__PURE__*/ _jsx(slots.appTitle, {
-                        ...slotProps?.appTitle,
-                      })
-                    : /*#__PURE__*/
-                      /* Hierarchy of application of `branding`
-                       * 1. Branding prop passed in the `slotProps.appTitle`
-                       * 2. Branding prop passed to the `DashboardLayout`
-                       * 3. Branding prop passed to the `AppProvider`
-                       */
-                      _jsx(AppTitle, {
-                        branding: branding,
-                        ...slotProps?.appTitle,
-                      }),
-                ],
-              }),
-              /*#__PURE__*/ _jsxs(Stack, {
-                direction: "row",
-                alignItems: "center",
-                spacing: 1,
-                sx: {
-                  marginLeft: "auto",
-                },
-                children: [
-                  /*#__PURE__*/ _jsx(ToolbarActionsSlot, {
-                    ...slotProps?.toolbarActions,
-                  }),
-                  /*#__PURE__*/ _jsx(ToolbarAccountSlot, {
-                    ...slotProps?.toolbarAccount,
-                  }),
-                ],
-              }),
-            ],
-          }),
-        }),
+       
       }),
       !hideNavigation
         ? /*#__PURE__*/ _jsxs(React.Fragment, {
@@ -363,11 +312,7 @@ function DashboardLayout(props) {
           minWidth: 0,
         },
         children: [
-          /*#__PURE__*/ _jsx(Toolbar, {
-            sx: {
-              displayPrint: "none",
-            },
-          }),
+
           /*#__PURE__*/ _jsx(Box, {
             component: "main",
             sx: {
