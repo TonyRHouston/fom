@@ -67,6 +67,33 @@ function DashboardLayout(props) {
     ...brandingContext,
     ...brandingProp,
   };
+  function menu() {
+    return /*#__PURE__*/ _jsxs(React.Fragment, {
+      children: [
+        /*#__PURE__*/ _jsx(Box, {
+          sx: {
+            mr: {
+              sm: disableCollapsibleSidebar ? 0 : 1,
+            },
+            display: {
+              md: "none",
+            },
+          },
+          children: getMenuIcon(isMobileNavigationExpanded),
+        }),
+        /*#__PURE__*/ _jsx(Box, {
+          sx: {
+            display: {
+              xs: "none",
+              md: disableCollapsibleSidebar ? "none" : "block",
+            },
+            mr: disableCollapsibleSidebar ? 0 : 1,
+          },
+          children: getMenuIcon(isDesktopNavigationExpanded),
+        }),
+      ],
+    });
+  }
   const navigation = navigationProp ?? navigationContext;
   const [isDesktopNavigationExpanded, setIsDesktopNavigationExpanded] =
     React.useState(!defaultSidebarCollapsed);
@@ -183,7 +210,7 @@ function DashboardLayout(props) {
                   )
                 : {}),
             },
-            children: [ menu(),
+            children: [
               /*#__PURE__*/ _jsx(DashboardSidebarSubNavigation, {
                 subNavigation: navigation,
                 onLinkClick: handleNavigationLinkClick,
@@ -258,6 +285,7 @@ function DashboardLayout(props) {
           sx: {
             backgroundColor: "inherit",
             mx: {
+
               xs: -0.75,
               sm: -1.5,
             },
@@ -273,7 +301,7 @@ function DashboardLayout(props) {
             children: [
               /*#__PURE__*/ _jsxs(Stack, {
                 direction: "row",
-                children: [
+                children: [menu(),
                   slots?.appTitle
                     ? /*#__PURE__*/ _jsx(slots.appTitle, {
                         ...slotProps?.appTitle,
@@ -329,7 +357,7 @@ function DashboardLayout(props) {
                   },
                   ...getDrawerSharedSx(false, true),
                 },
-                children: getDrawerContent(false, "phone"),
+                children: [getDrawerContent(false, "phone"), menu()],
               }),
               /*#__PURE__*/ _jsx(Drawer, {
                 variant: "permanent",
@@ -341,7 +369,7 @@ function DashboardLayout(props) {
                   },
                   ...getDrawerSharedSx(isMobileMini, false),
                 },
-                children: getDrawerContent(isMobileMini, "tablet"),
+                children: [getDrawerContent(isMobileMini, "tablet"), menu()],
               }),
               /*#__PURE__*/ _jsx(Drawer, {
                 variant: "permanent",
@@ -352,7 +380,7 @@ function DashboardLayout(props) {
                   },
                   ...getDrawerSharedSx(isDesktopMini, false),
                 },
-                children: getDrawerContent(isDesktopMini, "desktop"),
+                children: [getDrawerContent(isDesktopMini, "desktop"), menu()],
               }),
             ],
           })
@@ -528,32 +556,5 @@ process.env.NODE_ENV !== "production"
     })
   : void 0;
 
-function menu() {
-  return /*#__PURE__*/ _jsxs(React.Fragment, {
-    children: [
-      /*#__PURE__*/ _jsx(Box, {
-        sx: {
-          mr: {
-            sm:  1,
-          },
-          display: {
-            md: "none",
-          },
-        },
-        children: getMenuIcon(isMobileNavigationExpanded),
-      }),
-      /*#__PURE__*/ _jsx(Box, {
-        sx: {
-          display: {
-            xs: "none",
-            md:  "block",
-          },
-          mr:  1,
-        },
-        children: getMenuIcon(isDesktopNavigationExpanded),
-      }),
-    ],
-  });
-}
 
 export { DashboardLayout };
