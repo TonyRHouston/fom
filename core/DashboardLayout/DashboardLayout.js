@@ -68,7 +68,7 @@ function DashboardLayout(props) {
     ...brandingProp,
   };
   function menu() {
-    return  getMenuIcon(isMobileNavigationExpanded)
+    return getMenuIcon(isMobileNavigationExpanded);
   }
   const navigation = navigationProp ?? navigationContext;
   const [isDesktopNavigationExpanded, setIsDesktopNavigationExpanded] =
@@ -128,6 +128,12 @@ function DashboardLayout(props) {
     setIsMobileNavigationExpanded(false);
   }, [setIsMobileNavigationExpanded]);
 
+  function toolAccount() {
+    return /*#__PURE__*/ _jsx(ToolbarAccountSlot, {
+      ...slotProps?.toolbarAccount,
+    });
+  }
+
   // If useEffect was used, the reset would also happen on the client render after SSR which we don't need
   React.useMemo(() => {
     if (navigation) {
@@ -143,13 +149,13 @@ function DashboardLayout(props) {
       const expandMenuActionText = "Expand";
       const collapseMenuActionText = "Collapse";
       return /*#__PURE__*/ _jsx(IconButton, {
-            "aria-label": `${isExpanded ? collapseMenuActionText : expandMenuActionText} navigation menu`,
-            onClick: toggleNavigationExpanded,
-            children: isExpanded
-              ? _MenuOpenIcon ||
-                (_MenuOpenIcon = /*#__PURE__*/ _jsx(MenuOpenIcon, {}))
-              : _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {})),
-          });
+        "aria-label": `${isExpanded ? collapseMenuActionText : expandMenuActionText} navigation menu`,
+        onClick: toggleNavigationExpanded,
+        children: isExpanded
+          ? _MenuOpenIcon ||
+            (_MenuOpenIcon = /*#__PURE__*/ _jsx(MenuOpenIcon, {}))
+          : _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {})),
+      });
     },
     [toggleNavigationExpanded]
   );
@@ -179,11 +185,10 @@ function DashboardLayout(props) {
                   )
                 : {}),
             },
-            children: [ 
+            children: [
               /*#__PURE__*/ _jsx(ToolbarAccountSlot, {
-              ...slotProps?.toolbarAccount,
-            }),//added
-
+                ...slotProps?.toolbarAccount,
+              }), //added
 
               /*#__PURE__*/ _jsx(DashboardSidebarSubNavigation, {
                 subNavigation: navigation,
@@ -255,7 +260,6 @@ function DashboardLayout(props) {
         sx: {
           displayPrint: "none",
         },
-       
       }),
       !hideNavigation
         ? /*#__PURE__*/ _jsxs(React.Fragment, {
@@ -312,7 +316,6 @@ function DashboardLayout(props) {
           minWidth: 0,
         },
         children: [
-
           /*#__PURE__*/ _jsx(Box, {
             component: "main",
             sx: {
@@ -470,6 +473,5 @@ process.env.NODE_ENV !== "production"
       ]),
     })
   : void 0;
-
 
 export { DashboardLayout };
