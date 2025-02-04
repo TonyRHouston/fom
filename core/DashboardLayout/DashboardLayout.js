@@ -128,6 +128,7 @@ function DashboardLayout(props) {
     setIsMobileNavigationExpanded(false);
   }, [setIsMobileNavigationExpanded]);
 
+
   // If useEffect was used, the reset would also happen on the client render after SSR which we don't need
   React.useMemo(() => {
     if (navigation) {
@@ -138,12 +139,17 @@ function DashboardLayout(props) {
     !disableCollapsibleSidebar && !isDesktopNavigationExpanded;
   const isMobileMini =
     !disableCollapsibleSidebar && !isMobileNavigationExpanded;
-  const getMenuIcon = React.useCallback(() => {
-    return /*#__PURE__*/ _jsx(IconButton, {
-      onClick: toggleNavigationExpanded,
-      children: _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {})),
-    });
-  }, [toggleNavigationExpanded]);
+  const getMenuIcon = React.useCallback(
+    () => {
+
+      return /*#__PURE__*/ _jsx(IconButton, {       
+        onClick: toggleNavigationExpanded,
+        children: _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {
+        })),
+      });
+    },
+    [toggleNavigationExpanded]
+  );
   const hasDrawerTransitions =
     isOverSmViewport && (!disableCollapsibleSidebar || isOverMdViewport);
   const ToolbarActionsSlot = slots?.toolbarActions ?? ToolbarActions;
@@ -151,6 +157,7 @@ function DashboardLayout(props) {
   const SidebarFooterSlot = slots?.sidebarFooter ?? Account;
   const getDrawerContent = React.useCallback(
     (isMini, viewport) =>
+      
       /*#__PURE__*/ _jsxs(React.Fragment, {
         children: [
           /*#__PURE__*/ _jsxs(Box, {
@@ -170,8 +177,7 @@ function DashboardLayout(props) {
                   )
                 : {}),
             },
-            children: [
-              menu(), //added
+            children: [//added
 
               /*#__PURE__*/ _jsx(DashboardSidebarSubNavigation, {
                 subNavigation: navigation,
@@ -189,7 +195,7 @@ function DashboardLayout(props) {
                 : null,
             ],
           }),
-        ],
+        menu()],
       }),
     [
       SidebarFooterSlot,
@@ -237,7 +243,6 @@ function DashboardLayout(props) {
       ...sx,
     },
     children: [
-      menu(),
       /*#__PURE__*/ _jsx(AppBar, {
         color: "inherit",
         position: "absolute",
@@ -247,7 +252,7 @@ function DashboardLayout(props) {
       }),
       !hideNavigation
         ? /*#__PURE__*/ _jsxs(React.Fragment, {
-            children: [
+            children: [menu(),
               /*#__PURE__*/ _jsx(Drawer, {
                 container: layoutRef.current,
                 variant: "temporary",
@@ -293,17 +298,19 @@ function DashboardLayout(props) {
           })
         : null,
 
-      /*#__PURE__*/ _jsx(Box, {
-        component: "main",
-        sx: {
-          display: "flex",
-          flexDirection: "column",
-          flex: 1,
-          overflow: "auto",
-        },
-        children: children,
-      }),
-    ],
+          /*#__PURE__*/ _jsx(Box, {
+            component: "main",
+            sx: {
+              display: "flex",
+              flexDirection: "column",
+              flex: 1,
+              overflow: "auto",
+            },
+            children: children,
+          })
+        ],
+
+    
   });
 }
 
