@@ -128,7 +128,6 @@ function DashboardLayout(props) {
     setIsMobileNavigationExpanded(false);
   }, [setIsMobileNavigationExpanded]);
 
-
   // If useEffect was used, the reset would also happen on the client render after SSR which we don't need
   React.useMemo(() => {
     if (navigation) {
@@ -139,17 +138,13 @@ function DashboardLayout(props) {
     !disableCollapsibleSidebar && !isDesktopNavigationExpanded;
   const isMobileMini =
     !disableCollapsibleSidebar && !isMobileNavigationExpanded;
-  const getMenuIcon = React.useCallback(
-    () => {
-
-      return /*#__PURE__*/ _jsx(IconButton, {       
-        onClick: toggleNavigationExpanded,
-        children: _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {
-        })),
-      });
-    },
-    [toggleNavigationExpanded]
-  );
+  const getMenuIcon = React.useCallback(() => {
+    return /*#__PURE__*/ _jsx(IconButton, {
+      onClick: toggleNavigationExpanded,
+      children: _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {})),
+      flex:false
+    });
+  }, [toggleNavigationExpanded]);
   const hasDrawerTransitions =
     isOverSmViewport && (!disableCollapsibleSidebar || isOverMdViewport);
   const ToolbarActionsSlot = slots?.toolbarActions ?? ToolbarActions;
@@ -157,7 +152,6 @@ function DashboardLayout(props) {
   const SidebarFooterSlot = slots?.sidebarFooter ?? Account;
   const getDrawerContent = React.useCallback(
     (isMini, viewport) =>
-      
       /*#__PURE__*/ _jsxs(React.Fragment, {
         children: [
           /*#__PURE__*/ _jsxs(Box, {
@@ -177,7 +171,8 @@ function DashboardLayout(props) {
                   )
                 : {}),
             },
-            children: [//added
+            children: [
+              //added
 
               /*#__PURE__*/ _jsx(DashboardSidebarSubNavigation, {
                 subNavigation: navigation,
@@ -187,15 +182,33 @@ function DashboardLayout(props) {
                 hasDrawerTransitions: hasDrawerTransitions,
                 selectedItemId: selectedItemIdRef.current,
               }),
-              SidebarFooterSlot
-                ? /*#__PURE__*/ _jsx(SidebarFooterSlot, {
-                    mini: isMini,
-                    ...slotProps?.sidebarFooter,
-                  })
-                : null,
             ],
           }),
-        menu()],
+
+          /*#__PURE__*/ _jsxs(Box, {
+            sx: {
+              height: "100%",
+              display: "flex",
+              flexDirection: "row-reverse",
+              justifyContent: "space-between",
+              
+              overflow: "auto",
+              pt: navigation[0]?.kind === "header" && !isMini ? 0 : 2,
+              ...(hasDrawerTransitions
+                ? getDrawerSxTransitionMixin(
+                    isNavigationFullyExpanded,
+                    "padding"
+                  )
+                : {}),
+            },
+            children: [
+               /*#__PURE__*/ _jsx(SidebarFooterSlot, {
+                    mini: isMini,
+                    ...slotProps?.sidebarFooter,
+                  }), menu(),
+            ],
+          }),
+        ],
       }),
     [
       SidebarFooterSlot,
@@ -252,7 +265,8 @@ function DashboardLayout(props) {
       }),
       !hideNavigation
         ? /*#__PURE__*/ _jsxs(React.Fragment, {
-            children: [menu(),
+            children: [
+              menu(),
               /*#__PURE__*/ _jsx(Drawer, {
                 container: layoutRef.current,
                 variant: "temporary",
@@ -298,19 +312,17 @@ function DashboardLayout(props) {
           })
         : null,
 
-          /*#__PURE__*/ _jsx(Box, {
-            component: "main",
-            sx: {
-              display: "flex",
-              flexDirection: "column",
-              flex: 1,
-              overflow: "auto",
-            },
-            children: children,
-          })
-        ],
-
-    
+      /*#__PURE__*/ _jsx(Box, {
+        component: "main",
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
+          overflow: "auto",
+        },
+        children: children,
+      }),
+    ],
   });
 }
 
