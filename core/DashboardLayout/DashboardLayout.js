@@ -183,7 +183,7 @@ function DashboardLayout(props) {
                   )
                 : {}),
             },
-            children: [
+            children: [ menu(),
               /*#__PURE__*/ _jsx(DashboardSidebarSubNavigation, {
                 subNavigation: navigation,
                 onLinkClick: handleNavigationLinkClick,
@@ -534,7 +534,7 @@ function menu() {
       /*#__PURE__*/ _jsx(Box, {
         sx: {
           mr: {
-            sm: disableCollapsibleSidebar ? 0 : 1,
+            sm:  1,
           },
           display: {
             md: "none",
@@ -546,9 +546,9 @@ function menu() {
         sx: {
           display: {
             xs: "none",
-            md: disableCollapsibleSidebar ? "none" : "block",
+            md:  "block",
           },
-          mr: disableCollapsibleSidebar ? 0 : 1,
+          mr:  1,
         },
         children: getMenuIcon(isDesktopNavigationExpanded),
       }),
