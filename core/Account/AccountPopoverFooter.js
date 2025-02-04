@@ -22,7 +22,7 @@ function AccountPopoverFooter(props) {
     sx: {
       display: 'flex',
       flexDirection: 'row',
-      p: 0,
+      p: 1,
       justifyContent: 'flex-end',
       ...rest.sx
     },

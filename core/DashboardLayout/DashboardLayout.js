@@ -328,7 +328,7 @@ function DashboardLayout(props) {
       /*#__PURE__*/ _jsx(Box, {
         component: "acc",
         position: "fixed",
-        right: "10px",
+        right: "12px",
         bottom: "5px",
         children: /*#__PURE__*/ _jsx(SidebarFooterSlot, {
           ...slotProps?.sidebarFooter,
