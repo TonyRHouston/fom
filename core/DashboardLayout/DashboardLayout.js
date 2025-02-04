@@ -142,7 +142,7 @@ function DashboardLayout(props) {
   const getMenuIcon = React.useCallback(() => {
     return /*#__PURE__*/ _jsx(IconButton, {
       onClick: toggleNavigationExpanded,
-      children: _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {})),
+      children: _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {size:'large'})),
     });
   }, [toggleNavigationExpanded]);
   const hasDrawerTransitions =
@@ -172,8 +172,6 @@ function DashboardLayout(props) {
                 : {}),
             },
             children: [
-              //added
-
               /*#__PURE__*/ _jsx(DashboardSidebarSubNavigation, {
                 subNavigation: navigation,
                 onLinkClick: handleNavigationLinkClick,
@@ -204,12 +202,6 @@ function DashboardLayout(props) {
                   )
                 : {}),
             },
-            children: [
-              /*#__PURE__*/ _jsx(SidebarFooterSlot, {
-                mini: isMini,
-                ...slotProps?.sidebarFooter,
-              }),
-            ],
           }),
         ],
       }),
@@ -269,6 +261,14 @@ function DashboardLayout(props) {
       !hideNavigation
         ? /*#__PURE__*/ _jsxs(React.Fragment, {
             children: [
+              /*#__PURE__*/ _jsx(Box, {
+                component: "menu",
+                position: "fixed",
+                left: "-25px",
+                bottom: "0px",
+                children: menu(),
+                zIndex: 10000
+              }),
               /*#__PURE__*/ _jsx(Drawer, {
                 container: layoutRef.current,
                 variant: "temporary",
@@ -324,23 +324,16 @@ function DashboardLayout(props) {
         },
         children: children,
       }),
+
       /*#__PURE__*/ _jsx(Box, {
         component: "acc",
         position: "fixed",
-        left: "15px",
-        bottom: "15px",
-        children: menu(),
-        zIndex: 10000000,
-      }),
-      /*#__PURE__*/ _jsx(Box, {
-        component: "acc",
-        position: "fixed",
-        right: "15px",
-        bottom: "15px",
+        right: "10px",
+        bottom: "5px",
         children: /*#__PURE__*/ _jsx(SidebarFooterSlot, {
           ...slotProps?.sidebarFooter,
         }),
-        zIndex: 10000000,
+        zIndex: 1,
       }),
     ],
   });

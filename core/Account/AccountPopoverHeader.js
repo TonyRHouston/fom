@@ -14,11 +14,12 @@ import { jsx as _jsx } from "react/jsx-runtime";
  */
 function AccountPopoverHeader(props) {
   const {
-    children,
+    children,    
     ...rest
   } = props;
   return /*#__PURE__*/_jsx(Stack, {
     ...rest,
+
     children: children
   });
 }

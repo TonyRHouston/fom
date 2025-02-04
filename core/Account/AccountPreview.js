@@ -10,6 +10,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { SessionContext } from "../AppProvider/index.js";
 import { useLocaleText } from "../shared/locales/LocaleContext.js";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import zIndex from '@mui/material/styles/zIndex.js';
 /**
  * The AccountPreview component displays user account information.
  *
@@ -58,6 +59,7 @@ function AccountPreview(props) {
         direction: "row",
         justifyContent: "flex-start",
         spacing: 2,
+        zIndex:999999999,
         overflow: "hidden",
         children: [avatarContent, /*#__PURE__*/_jsxs(Stack, {
           direction: "column",
