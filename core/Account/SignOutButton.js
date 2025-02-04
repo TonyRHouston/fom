@@ -25,7 +25,9 @@ function SignOutButton(props) {
     size: "small",
     disableElevation: true,
     onClick: authentication?.signOut,
+         p: 1,
     sx: {
+      p:1,
       textTransform: 'capitalize',
       fontWeight: 'normal',
       filter: 'opacity(0.9)',

@@ -326,7 +326,7 @@ function DashboardLayout(props) {
       }),
 
       /*#__PURE__*/ _jsx(Box, {
-        component: "acc",
+
         position: "fixed",
         right: "12px",
         bottom: "5px",

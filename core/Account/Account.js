@@ -20,7 +20,9 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
  * - [Dashboard Layout](https://mui.com/toolpad/core/react-dashboard-layout/)
  * - [Sign-in Page](https://mui.com/toolpad/core/react-sign-in-page/)
  *
- * API:
+ * API:          slots={{
+            popoverContent: CustomMenu,
+          }}
  *
  * - [Account API](https://mui.com/toolpad/core/api/account)
  */
@@ -114,13 +116,21 @@ function Account(props) {
         direction: "column",
         ...slotProps?.popoverContent,
         children: [_AccountPopoverHeader || (_AccountPopoverHeader = /*#__PURE__*/_jsx(AccountPopoverHeader, {
-          children: /*#__PURE__*/_jsx(AccountPreview, {
+          children: [/*#__PURE__*/_jsx(AccountPreview, {
             variant: "expanded"
-          })
-        })), _Divider || (_Divider = /*#__PURE__*/_jsx(Divider, {})), /*#__PURE__*/_jsx(AccountPopoverFooter, {
-          children: /*#__PURE__*/_jsx(SignOutButton, {
+          }), /*#__PURE__*/_jsx(SignOutButton, {
             ...slotProps?.signOutButton
-          })
+          })]
+        })), 
+        _Divider || (_Divider = /*#__PURE__*/_jsx(Divider, {})), 
+        /*#__PURE__*/_jsx(AccountPopoverFooter, {
+          direction: "row",
+        sx:{                justifyContent: "space-between",},
+          children: [/*#__PURE__*/_jsx(SignOutButton, {
+            ...slotProps?.signOutButton
+          }),/*#__PURE__*/_jsx(SignOutButton, {
+            ...slotProps?.signOutButton
+          })]
         })]
       })
     })]
