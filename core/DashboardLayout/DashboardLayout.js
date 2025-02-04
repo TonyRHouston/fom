@@ -68,7 +68,7 @@ function DashboardLayout(props) {
     ...brandingProp,
   };
   function menu() {
-    return getMenuIcon(isMobileNavigationExpanded);
+    return getMenuIcon();
   }
   const navigation = navigationProp ?? navigationContext;
   const [isDesktopNavigationExpanded, setIsDesktopNavigationExpanded] =
@@ -128,11 +128,6 @@ function DashboardLayout(props) {
     setIsMobileNavigationExpanded(false);
   }, [setIsMobileNavigationExpanded]);
 
-  function toolAccount() {
-    return /*#__PURE__*/ _jsx(ToolbarAccountSlot, {
-      ...slotProps?.toolbarAccount,
-    });
-  }
 
   // If useEffect was used, the reset would also happen on the client render after SSR which we don't need
   React.useMemo(() => {
@@ -145,16 +140,12 @@ function DashboardLayout(props) {
   const isMobileMini =
     !disableCollapsibleSidebar && !isMobileNavigationExpanded;
   const getMenuIcon = React.useCallback(
-    (isExpanded) => {
-      const expandMenuActionText = "Expand";
-      const collapseMenuActionText = "Collapse";
+    () => {
+
       return /*#__PURE__*/ _jsx(IconButton, {
-        "aria-label": `${isExpanded ? collapseMenuActionText : expandMenuActionText} navigation menu`,
+        position:'fixed',
         onClick: toggleNavigationExpanded,
-        children: isExpanded
-          ? _MenuOpenIcon ||
-            (_MenuOpenIcon = /*#__PURE__*/ _jsx(MenuOpenIcon, {}))
-          : _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {})),
+        children: _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {})),
       });
     },
     [toggleNavigationExpanded]
@@ -163,11 +154,11 @@ function DashboardLayout(props) {
     isOverSmViewport && (!disableCollapsibleSidebar || isOverMdViewport);
   const ToolbarActionsSlot = slots?.toolbarActions ?? ToolbarActions;
   const ToolbarAccountSlot = slots?.toolbarAccount ?? Account;
-  const SidebarFooterSlot = slots?.sidebarFooter ?? null;
+  const SidebarFooterSlot = slots?.sidebarFooter ?? Account;
   const getDrawerContent = React.useCallback(
     (isMini, viewport) =>
       /*#__PURE__*/ _jsxs(React.Fragment, {
-        children: [
+        children: [menu(),
           /*#__PURE__*/ _jsxs(Box, {
             component: "nav",
             "aria-label": `${viewport.charAt(0).toUpperCase()}${viewport.slice(1)}`,
@@ -185,10 +176,7 @@ function DashboardLayout(props) {
                   )
                 : {}),
             },
-            children: [
-              /*#__PURE__*/ _jsx(ToolbarAccountSlot, {
-                ...slotProps?.toolbarAccount,
-              }), //added
+            children: [ //added
 
               /*#__PURE__*/ _jsx(DashboardSidebarSubNavigation, {
                 subNavigation: navigation,
@@ -280,7 +268,7 @@ function DashboardLayout(props) {
                   },
                   ...getDrawerSharedSx(false, true),
                 },
-                children: [getDrawerContent(false, "phone"), menu()],
+                children: [getDrawerContent(false, "phone")],
               }),
               /*#__PURE__*/ _jsx(Drawer, {
                 variant: "permanent",
@@ -292,7 +280,7 @@ function DashboardLayout(props) {
                   },
                   ...getDrawerSharedSx(isMobileMini, false),
                 },
-                children: [getDrawerContent(isMobileMini, "tablet"), menu()],
+                children: [getDrawerContent(isMobileMini, "tablet")],
               }),
               /*#__PURE__*/ _jsx(Drawer, {
                 variant: "permanent",
@@ -303,7 +291,7 @@ function DashboardLayout(props) {
                   },
                   ...getDrawerSharedSx(isDesktopMini, false),
                 },
-                children: [getDrawerContent(isDesktopMini, "desktop"), menu()],
+                children: [getDrawerContent(isDesktopMini, "desktop")],
               }),
             ],
           })
