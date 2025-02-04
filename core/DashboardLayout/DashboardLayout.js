@@ -28,6 +28,7 @@ import {
   getDrawerWidthTransitionMixin,
 } from "./utils.js";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import zIndex from "@mui/material/styles/zIndex.js";
 const AppBar = styled(MuiAppBar)(({ theme }) => ({
   borderWidth: 0,
   borderBottomWidth: 1,
@@ -141,8 +142,7 @@ function DashboardLayout(props) {
   const getMenuIcon = React.useCallback(() => {
     return /*#__PURE__*/ _jsx(IconButton, {
       onClick: toggleNavigationExpanded,
-      children: _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {
-      })),
+      children: _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {})),
     });
   }, [toggleNavigationExpanded]);
   const hasDrawerTransitions =
@@ -186,28 +186,29 @@ function DashboardLayout(props) {
           }),
 
           /*#__PURE__*/ _jsxs(Box, {
-            
             sx: {
               height: "100%",
               display: "flex",
-              flexDirection: "row-reverse",
+              flexDirection: isNavigationFullyExpanded
+                ? "row-reverse"
+                : "column",
               justifyContent: "space-between",
-              alignItems:'flex-end',
-              
+              alignItems: "flex-end",
+              flexShrink: 1,
               overflow: "auto",
               pt: navigation[0]?.kind === "header" && !isMini ? 0 : 2,
               ...(hasDrawerTransitions
                 ? getDrawerSxTransitionMixin(
                     isNavigationFullyExpanded,
-                    "padding",
+                    "padding"
                   )
                 : {}),
             },
             children: [
-               /*#__PURE__*/ _jsx(SidebarFooterSlot, {
+              /*#__PURE__*/ _jsx(SidebarFooterSlot, {
                 mini: isMini,
                 ...slotProps?.sidebarFooter,
-              }), menu()
+              }),
             ],
           }),
         ],
@@ -268,7 +269,6 @@ function DashboardLayout(props) {
       !hideNavigation
         ? /*#__PURE__*/ _jsxs(React.Fragment, {
             children: [
-           
               /*#__PURE__*/ _jsx(Drawer, {
                 container: layoutRef.current,
                 variant: "temporary",
@@ -323,6 +323,24 @@ function DashboardLayout(props) {
           overflow: "auto",
         },
         children: children,
+      }),
+      /*#__PURE__*/ _jsx(Box, {
+        component: "acc",
+        position: "fixed",
+        left: "15px",
+        bottom: "15px",
+        children: menu(),
+        zIndex: 10000000,
+      }),
+      /*#__PURE__*/ _jsx(Box, {
+        component: "acc",
+        position: "fixed",
+        right: "15px",
+        bottom: "15px",
+        children: /*#__PURE__*/ _jsx(SidebarFooterSlot, {
+          ...slotProps?.sidebarFooter,
+        }),
+        zIndex: 10000000,
       }),
     ],
   });
