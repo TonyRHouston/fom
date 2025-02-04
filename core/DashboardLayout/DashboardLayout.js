@@ -68,31 +68,7 @@ function DashboardLayout(props) {
     ...brandingProp,
   };
   function menu() {
-    return /*#__PURE__*/ _jsxs(React.Fragment, {
-      children: [
-        /*#__PURE__*/ _jsx(Box, {
-          sx: {
-            mr: {
-              sm: disableCollapsibleSidebar ? 0 : 1,
-            },
-            display: {
-              md: "none",
-            },
-          },
-          children: getMenuIcon(isMobileNavigationExpanded),
-        }),
-        /*#__PURE__*/ _jsx(Box, {
-          sx: {
-            display: {
-              xs: "none",
-              md: disableCollapsibleSidebar ? "none" : "block",
-            },
-            mr: disableCollapsibleSidebar ? 0 : 1,
-          },
-          children: getMenuIcon(isDesktopNavigationExpanded),
-        }),
-      ],
-    });
+    return  getMenuIcon(isMobileNavigationExpanded)
   }
   const navigation = navigationProp ?? navigationContext;
   const [isDesktopNavigationExpanded, setIsDesktopNavigationExpanded] =
@@ -166,20 +142,14 @@ function DashboardLayout(props) {
     (isExpanded) => {
       const expandMenuActionText = "Expand";
       const collapseMenuActionText = "Collapse";
-      return /*#__PURE__*/ _jsx(Tooltip, {
-        title: `${isExpanded ? collapseMenuActionText : expandMenuActionText} menu`,
-        enterDelay: 1000,
-        children: /*#__PURE__*/ _jsx("div", {
-          children: /*#__PURE__*/ _jsx(IconButton, {
+      return /*#__PURE__*/ _jsx(IconButton, {
             "aria-label": `${isExpanded ? collapseMenuActionText : expandMenuActionText} navigation menu`,
             onClick: toggleNavigationExpanded,
             children: isExpanded
               ? _MenuOpenIcon ||
                 (_MenuOpenIcon = /*#__PURE__*/ _jsx(MenuOpenIcon, {}))
               : _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {})),
-          }),
-        }),
-      });
+          });
     },
     [toggleNavigationExpanded]
   );
