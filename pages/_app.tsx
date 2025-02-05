@@ -24,10 +24,7 @@ type AppPropsWithLayout = AppProps & {
 };
 
 const NAVIGATION: Navigation = [
-  {
-    kind: 'header',
-    title: 'Main items',
-  },
+
   {
     segment: '',
     title: 'Dashboard',
