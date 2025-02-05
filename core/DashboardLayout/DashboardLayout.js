@@ -16,6 +16,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Card from '@mui/material/Card';
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import Copyright from "../../components/Copyright";
+import ModeSwitch from "../../components/ModeSwitch";
+
 import {
   BrandingContext,
   NavigationContext,
@@ -126,6 +128,8 @@ function DashboardLayout(props) {
   const toggleNavigationExpanded = React.useCallback(() => {
     setIsNavigationExpanded(!isNavigationExpanded);
   }, [isNavigationExpanded, setIsNavigationExpanded]);
+
+
   const handleNavigationLinkClick = React.useCallback(() => {
     selectedItemIdRef.current = "";
     setIsMobileNavigationExpanded(false);
@@ -307,7 +311,7 @@ function DashboardLayout(props) {
           })
         : null,
 
-      /*#__PURE__*/ _jsx(Card, {
+      /*#__PURE__*/ _jsx(Box, {
         component: "main",
 
         sx: {
@@ -330,13 +334,19 @@ function DashboardLayout(props) {
         children: /*#__PURE__*/ _jsx(SidebarFooterSlot, {
           ...slotProps?.sidebarFooter,
         }),
-        zIndex: 1250,
+        zIndex: theme.zIndex.drawer + 2,
       }), /*#__PURE__*/ _jsx(Box, {
         position: "fixed",
         left: "10px",
         top: "5px",
         children: menu(),
-        zIndex: 99999,
+        zIndex: theme.zIndex.drawer + 2,
+      }), /*#__PURE__*/ _jsx(Box, {
+        position: "fixed",
+        right: "10px",
+        top: "5px",
+        children: ModeSwitch(),
+        zIndex: theme.zIndex.drawer + 2,
       }), 
 
     ],
