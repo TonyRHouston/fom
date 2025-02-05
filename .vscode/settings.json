@@ -18,7 +18,13 @@
         "middleware.ts": true,
         "next-env.d.ts": true,
         "next.config.mjs": true,
-        ".env.local": true
+        ".env.local": true,
+        "core/node_modules": true,
+        "core/tsconfig.json.tsbuildinfo": true,
+        "core/README.md": true,
+        "core/package.json": true,
+        "core/LICENSE": true,
+        "core/CHANGELOG.md": true
     },
     "hide-files.files": [
         ".next",
@@ -33,6 +39,12 @@
         "middleware.ts",
         "next-env.d.ts",
         "next.config.mjs",
-        ".env.local"
+        ".env.local",
+        "core/node_modules",
+        "core/tsconfig.json.tsbuildinfo",
+        "core/README.md",
+        "core/package.json",
+        "core/LICENSE",
+        "core/CHANGELOG.md"
     ]
 }

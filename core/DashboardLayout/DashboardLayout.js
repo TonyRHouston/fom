@@ -142,7 +142,9 @@ function DashboardLayout(props) {
   const getMenuIcon = React.useCallback(() => {
     return /*#__PURE__*/ _jsx(IconButton, {
       onClick: toggleNavigationExpanded,
-      children: _MenuIcon || (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, {size:'large'})),
+      children:
+        _MenuIcon ||
+        (_MenuIcon = /*#__PURE__*/ _jsx(MenuIcon, { size: "large" })),
     });
   }, [toggleNavigationExpanded]);
   const hasDrawerTransitions =
@@ -156,14 +158,15 @@ function DashboardLayout(props) {
         children: [
           /*#__PURE__*/ _jsxs(Box, {
             component: "nav",
-            "aria-label": `${viewport.charAt(0).toUpperCase()}${viewport.slice(1)}`,
+            
+
             sx: {
               height: "100%",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
               overflow: "auto",
-              pt: navigation[0]?.kind === "header" && !isMini ? 0 : 2,
+              pt: navigation[0]?.kind === "header" /***&& !isMini ? 0 :*/== 2,
               ...(hasDrawerTransitions
                 ? getDrawerSxTransitionMixin(
                     isNavigationFullyExpanded,
@@ -194,7 +197,7 @@ function DashboardLayout(props) {
               alignItems: "flex-end",
               flexShrink: 1,
               overflow: "auto",
-              pt: navigation[0]?.kind === "header" && !isMini ? 0 : 2,
+              pt: navigation[0]?.kind === "header" /***&& !isMini ? 0 :*/== 2,
               ...(hasDrawerTransitions
                 ? getDrawerSxTransitionMixin(
                     isNavigationFullyExpanded,
@@ -267,7 +270,7 @@ function DashboardLayout(props) {
                 left: "-25px",
                 bottom: "0px",
                 children: menu(),
-                zIndex: 10000
+                zIndex: 10000,
               }),
               /*#__PURE__*/ _jsx(Drawer, {
                 container: layoutRef.current,
@@ -326,7 +329,6 @@ function DashboardLayout(props) {
       }),
 
       /*#__PURE__*/ _jsx(Box, {
-
         position: "fixed",
         right: "12px",
         bottom: "5px",
