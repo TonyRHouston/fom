@@ -13,11 +13,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuIcon from "@mui/icons-material/Menu";
-import Card from '@mui/material/Card';
+import Card from "@mui/material/Card";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import Copyright from "../../components/Copyright";
 import ModeSwitch from "../../components/ModeSwitch";
-
 import {
   BrandingContext,
   NavigationContext,
@@ -59,7 +58,7 @@ function DashboardLayout(props) {
     disableCollapsibleSidebar = false,
     defaultSidebarCollapsed = false,
     hideNavigation = false,
-    sidebarExpandedWidth = 260,
+    sidebarExpandedWidth = 265,
     slots,
     slotProps,
     sx,
@@ -89,9 +88,8 @@ function DashboardLayout(props) {
       matchMedia: appWindowContext.matchMedia,
     }
   );
-  const isNavigationExpanded = isOverMdViewport
-    ? isDesktopNavigationExpanded
-    : isMobileNavigationExpanded;
+  const isNavigationExpanded =
+    isOverMdViewport ? isDesktopNavigationExpanded : isMobileNavigationExpanded;
   const setIsNavigationExpanded = React.useCallback(
     (newExpanded) => {
       if (isOverMdViewport) {
@@ -125,7 +123,6 @@ function DashboardLayout(props) {
   const toggleNavigationExpanded = React.useCallback(() => {
     setIsNavigationExpanded(!isNavigationExpanded);
   }, [isNavigationExpanded, setIsNavigationExpanded]);
-
 
   const handleNavigationLinkClick = React.useCallback(() => {
     selectedItemIdRef.current = "";
@@ -166,12 +163,9 @@ function DashboardLayout(props) {
               justifyContent: "space-between",
               overflow: "auto",
               pt: 2,
-              ...(hasDrawerTransitions
-                ? getDrawerSxTransitionMixin(
-                    isNavigationFullyExpanded,
-                    "padding"
-                  )
-                : {}),
+              ...(hasDrawerTransitions ?
+                getDrawerSxTransitionMixin(isNavigationFullyExpanded, "padding")
+              : {}),
             },
             children: [
               /*#__PURE__*/ _jsx(DashboardSidebarSubNavigation, {
@@ -182,6 +176,7 @@ function DashboardLayout(props) {
                 hasDrawerTransitions: hasDrawerTransitions,
                 selectedItemId: selectedItemIdRef.current,
               }),
+              ,
             ],
           }),
         ],
@@ -203,11 +198,11 @@ function DashboardLayout(props) {
         width: drawerWidth,
         flexShrink: 0,
         ...getDrawerWidthTransitionMixin(isNavigationExpanded),
-        ...(isTemporary
-          ? {
-              position: "absolute",
-            }
-          : {}),
+        ...(isTemporary ?
+          {
+            position: "absolute",
+          }
+        : {}),
         [`& .MuiDrawer-paper`]: {
           position: "absolute",
           width: drawerWidth,
@@ -238,245 +233,259 @@ function DashboardLayout(props) {
         sx: {
           displayPrint: "none",
         },
-        children:[
- /*#__PURE__*/ _jsx(Box, {
-        position: "fixed",
-        right: "45px",
-        bottom: "1px",
-        children: /*#__PURE__*/ _jsx(SidebarFooterSlot, {
-          ...slotProps?.sidebarFooter,
-        }),
-        disabled:true,
-        zIndex: theme.zIndex.drawer + 2,
-      }), 
-      
-      /*#__PURE__*/ _jsx(Box, {
-        position: "fixed",
-        right: "13px",
-        top: "10px",
-        children: getMenuIcon(),
-        zIndex: theme.zIndex.drawer + 2,
-      }),
-      
-      /*#__PURE__*/ _jsx(Box, {
-        position: "fixed",
-        right: "10px",
-        bottom: "10px",
-        children: ModeSwitch(),
-        zIndex: theme.zIndex.drawer + 2,
-      }), 
+        children: [
+          /*#__PURE__*/ _jsx(Box, {
+            position: "fixed",
+            left: "11px",
+            bottom: "1px",
+            children: /*#__PURE__*/ _jsx(SidebarFooterSlot, {
+              ...slotProps?.sidebarFooter,
+            }),
+            disabled: true,
+            zIndex: theme.zIndex.drawer + 2,
+          }),
 
-        ]
+          /*#__PURE__*/ _jsx(Box, {
+            position: "fixed",
+            right: "13px",
+            top: "10px",
+            children: getMenuIcon(),
+            zIndex: theme.zIndex.drawer + 2,
+          }),
+
+          /*#__PURE__*/ _jsx(Box, {
+            position: "fixed",
+            right: "13px",
+            bottom: "10px",
+            children: ModeSwitch(),
+            zIndex: theme.zIndex.drawer + 2,
+          }),
+        ],
       }),
-      !hideNavigation
-        ? /*#__PURE__*/ _jsxs(React.Fragment, {
-            children: [
-              /*#__PURE__*/ _jsx(Drawer, {
-                container: layoutRef.current,
-                variant: "temporary",
-                open: isMobileNavigationExpanded,
-                onClose: handleSetNavigationExpanded(false),
-                ModalProps: {
-                  keepMounted: true, // Better open performance on mobile.
+      !hideNavigation ?
+        /*#__PURE__*/ _jsxs(React.Fragment, {
+          children: [
+            /*#__PURE__*/ _jsx(Drawer, {
+              container: layoutRef.current,
+              variant: "temporary",
+              open: isMobileNavigationExpanded,
+              onClose: handleSetNavigationExpanded(false),
+              ModalProps: {
+                keepMounted: true, // Better open performance on mobile.
+              },
+              sx: {
+                display: {
+                  xs: "block",
+                  sm: disableCollapsibleSidebar ? "block" : "none",
+                  md: "none",
                 },
-                sx: {
-                  display: {
-                    xs: "block",
-                    sm: disableCollapsibleSidebar ? "block" : "none",
-                    md: "none",
-                  },
-                  ...getDrawerSharedSx(false, true),
+                ...getDrawerSharedSx(false, true),
+              },
+              children: [getDrawerContent(false, "phone")],
+            }),
+            /*#__PURE__*/ _jsx(Drawer, {
+              variant: "permanent",
+              sx: {
+                display: {
+                  xs: "none",
+                  sm: disableCollapsibleSidebar ? "none" : "block",
+                  md: "none",
                 },
-                children: [getDrawerContent(false, "phone")],
-              }),
-              /*#__PURE__*/ _jsx(Drawer, {
-                variant: "permanent",
-                sx: {
-                  display: {
-                    xs: "none",
-                    sm: disableCollapsibleSidebar ? "none" : "block",
-                    md: "none",
-                  },
-                  ...getDrawerSharedSx(isMobileMini, false),
+                ...getDrawerSharedSx(isMobileMini, false),
+              },
+              children: [getDrawerContent(isMobileMini, "tablet")],
+            }),
+            /*#__PURE__*/ _jsx(Drawer, {
+              variant: "permanent",
+              sx: {
+                display: {
+                  xs: "none",
+                  md: "block",
                 },
-                children: [getDrawerContent(isMobileMini, "tablet")],
-              }),
-              /*#__PURE__*/ _jsx(Drawer, {
-                variant: "permanent",
-                sx: {
-                  display: {
-                    xs: "none",
-                    md: "block",
-                  },
-                  ...getDrawerSharedSx(isDesktopMini, false),
-                },
-                children: [getDrawerContent(isDesktopMini, "desktop")],
-              }),
-            ],
-          })
-        : null,
+                ...getDrawerSharedSx(isDesktopMini, false),
+              },
+              children: [
+                getDrawerContent(isDesktopMini, "desktop"),
+                logoLoad(theme.zIndex.drawer + 2),
+              ],
+            }),
+          ],
+        })
+      : null,
 
       /*#__PURE__*/ _jsx(Box, {
         component: "main",
 
         sx: {
           overflowWrap: "break-word",
-          p:2,
+          p: 2,
           display: "flex",
           flexDirection: "column",
           flex: 1,
           overflow: "auto",
-
         },
         children: [children, <Copyright />],
-        
       }),
-
-     
     ],
   });
 }
 
-process.env.NODE_ENV !== "production"
-  ? (DashboardLayout.propTypes /* remove-proptypes */ = {
-      // ┌────────────────────────────── Warning ──────────────────────────────┐
-      // │ These PropTypes are generated from the TypeScript type definitions. │
-      // │ To update them, edit the TypeScript types and run `pnpm proptypes`. │
-      // └─────────────────────────────────────────────────────────────────────┘
-      /**
-       * Branding options for the dashboard.
-       * @default null
-       */
-      branding: PropTypes.shape({
-        homeUrl: PropTypes.string,
-        logo: PropTypes.node,
-        title: PropTypes.string,
+function logoLoad(zI) {
+  return (
+    <Box justifyContent='center' alignItems='center' display='flex' sx={{position: 'absolute', bottom: 45, left: -12, height: '60px', width: 'auto', zIndex: zI}}>
+    <img
+      src="https://github.com/TonyRHouston/Webpage/blob/main/darkLogo.png?raw=true"
+      alt="FoM"
+      style={{
+        position: "relative",
+        bottom: "15px",
+        left: "14px",
+        zIndex: 1000,
+        width: "100%",
+        height: "100%",
+      }}
+    />
+
+  </Box>
+  )
+}
+
+process.env.NODE_ENV !== "production" ?
+  (DashboardLayout.propTypes /* remove-proptypes */ = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │ To update them, edit the TypeScript types and run `pnpm proptypes`. │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * Branding options for the dashboard.
+     * @default null
+     */
+    branding: PropTypes.shape({
+      homeUrl: PropTypes.string,
+      logo: PropTypes.node,
+      title: PropTypes.string,
+    }),
+    /**
+     * The content of the dashboard.
+     */
+    children: PropTypes.node,
+    /**
+     * Whether the sidebar should start collapsed in desktop size screens.
+     * @default false
+     */
+    defaultSidebarCollapsed: PropTypes.bool,
+    /**
+     * Whether the sidebar should not be collapsible to a mini variant in desktop and tablet viewports.
+     * @default false
+     */
+    disableCollapsibleSidebar: PropTypes.bool,
+    /**
+     * Whether the navigation bar and menu icon should be hidden
+     * @default false
+     */
+    hideNavigation: PropTypes.bool,
+    /**
+     * Navigation definition for the dashboard.
+     * @default []
+     */
+    navigation: PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.shape({
+          action: PropTypes.node,
+          children: PropTypes.arrayOf(
+            PropTypes.oneOfType([
+              PropTypes.object,
+              PropTypes.shape({
+                kind: PropTypes.oneOf(["header"]).isRequired,
+                title: PropTypes.string.isRequired,
+              }),
+              PropTypes.shape({
+                kind: PropTypes.oneOf(["divider"]).isRequired,
+              }),
+            ]).isRequired
+          ),
+          icon: PropTypes.node,
+          kind: PropTypes.oneOf(["page"]),
+          pattern: PropTypes.string,
+          segment: PropTypes.string,
+          title: PropTypes.string,
+        }),
+        PropTypes.shape({
+          kind: PropTypes.oneOf(["header"]).isRequired,
+          title: PropTypes.string.isRequired,
+        }),
+        PropTypes.shape({
+          kind: PropTypes.oneOf(["divider"]).isRequired,
+        }),
+      ]).isRequired
+    ),
+    /**
+     * Width of the sidebar when expanded.
+     * @default 320
+     */
+    sidebarExpandedWidth: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+    /**
+     * The props used for each slot inside.
+     * @default {}
+     */
+    slotProps: PropTypes.shape({
+      appTitle: PropTypes.shape({
+        branding: PropTypes.shape({
+          homeUrl: PropTypes.string,
+          logo: PropTypes.node,
+          title: PropTypes.string,
+        }),
       }),
-      /**
-       * The content of the dashboard.
-       */
-      children: PropTypes.node,
-      /**
-       * Whether the sidebar should start collapsed in desktop size screens.
-       * @default false
-       */
-      defaultSidebarCollapsed: PropTypes.bool,
-      /**
-       * Whether the sidebar should not be collapsible to a mini variant in desktop and tablet viewports.
-       * @default false
-       */
-      disableCollapsibleSidebar: PropTypes.bool,
-      /**
-       * Whether the navigation bar and menu icon should be hidden
-       * @default false
-       */
-      hideNavigation: PropTypes.bool,
-      /**
-       * Navigation definition for the dashboard.
-       * @default []
-       */
-      navigation: PropTypes.arrayOf(
-        PropTypes.oneOfType([
-          PropTypes.shape({
-            action: PropTypes.node,
-            children: PropTypes.arrayOf(
-              PropTypes.oneOfType([
-                PropTypes.object,
-                PropTypes.shape({
-                  kind: PropTypes.oneOf(["header"]).isRequired,
-                  title: PropTypes.string.isRequired,
-                }),
-                PropTypes.shape({
-                  kind: PropTypes.oneOf(["divider"]).isRequired,
-                }),
-              ]).isRequired
-            ),
-            icon: PropTypes.node,
-            kind: PropTypes.oneOf(["page"]),
-            pattern: PropTypes.string,
-            segment: PropTypes.string,
-            title: PropTypes.string,
-          }),
-          PropTypes.shape({
-            kind: PropTypes.oneOf(["header"]).isRequired,
-            title: PropTypes.string.isRequired,
-          }),
-          PropTypes.shape({
-            kind: PropTypes.oneOf(["divider"]).isRequired,
-          }),
-        ]).isRequired
+      sidebarFooter: PropTypes.shape({
+        mini: PropTypes.bool.isRequired,
+      }),
+      toolbarAccount: PropTypes.shape({
+        localeText: PropTypes.shape({
+          iconButtonAriaLabel: PropTypes.string,
+          signInLabel: PropTypes.string,
+          signOutLabel: PropTypes.string,
+        }),
+        slotProps: PropTypes.shape({
+          popover: PropTypes.object,
+          popoverContent: PropTypes.object,
+          preview: PropTypes.object,
+          signInButton: PropTypes.object,
+          signOutButton: PropTypes.object,
+        }),
+        slots: PropTypes.shape({
+          popover: PropTypes.elementType,
+          popoverContent: PropTypes.elementType,
+          preview: PropTypes.elementType,
+          signInButton: PropTypes.elementType,
+          signOutButton: PropTypes.elementType,
+        }),
+      }),
+      toolbarActions: PropTypes.object,
+    }),
+    /**
+     * The components used for each slot inside.
+     * @default {}
+     */
+    slots: PropTypes.shape({
+      appTitle: PropTypes.elementType,
+      sidebarFooter: PropTypes.elementType,
+      toolbarAccount: PropTypes.elementType,
+      toolbarActions: PropTypes.elementType,
+    }),
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: PropTypes.oneOfType([
+      PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
       ),
-      /**
-       * Width of the sidebar when expanded.
-       * @default 320
-       */
-      sidebarExpandedWidth: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-      ]),
-      /**
-       * The props used for each slot inside.
-       * @default {}
-       */
-      slotProps: PropTypes.shape({
-        appTitle: PropTypes.shape({
-          branding: PropTypes.shape({
-            homeUrl: PropTypes.string,
-            logo: PropTypes.node,
-            title: PropTypes.string,
-          }),
-        }),
-        sidebarFooter: PropTypes.shape({
-          mini: PropTypes.bool.isRequired,
-        }),
-        toolbarAccount: PropTypes.shape({
-          localeText: PropTypes.shape({
-            iconButtonAriaLabel: PropTypes.string,
-            signInLabel: PropTypes.string,
-            signOutLabel: PropTypes.string,
-          }),
-          slotProps: PropTypes.shape({
-            popover: PropTypes.object,
-            popoverContent: PropTypes.object,
-            preview: PropTypes.object,
-            signInButton: PropTypes.object,
-            signOutButton: PropTypes.object,
-          }),
-          slots: PropTypes.shape({
-            popover: PropTypes.elementType,
-            popoverContent: PropTypes.elementType,
-            preview: PropTypes.elementType,
-            signInButton: PropTypes.elementType,
-            signOutButton: PropTypes.elementType,
-          }),
-        }),
-        toolbarActions: PropTypes.object,
-      }),
-      /**
-       * The components used for each slot inside.
-       * @default {}
-       */
-      slots: PropTypes.shape({
-        appTitle: PropTypes.elementType,
-        sidebarFooter: PropTypes.elementType,
-        toolbarAccount: PropTypes.elementType,
-        toolbarActions: PropTypes.elementType,
-      }),
-      /**
-       * The system prop that allows defining system overrides as well as additional CSS styles.
-       */
-      sx: PropTypes.oneOfType([
-        PropTypes.arrayOf(
-          PropTypes.oneOfType([
-            PropTypes.func,
-            PropTypes.object,
-            PropTypes.bool,
-          ])
-        ),
-        PropTypes.func,
-        PropTypes.object,
-      ]),
-    })
-  : void 0;
+      PropTypes.func,
+      PropTypes.object,
+    ]),
+  })
+: void 0;
 
 export { DashboardLayout };
