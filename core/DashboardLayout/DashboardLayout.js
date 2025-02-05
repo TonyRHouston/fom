@@ -157,6 +157,27 @@ function DashboardLayout(props) {
           /*#__PURE__*/ _jsxs(Box, {
             component: "nav",
             sx: {
+              height: "10%",
+              width: isMini ? 64 : sidebarExpandedWidth,
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              overflow: "hidden",
+              pt: 2,
+              ...(hasDrawerTransitions
+                ? getDrawerSxTransitionMixin(
+                    isNavigationFullyExpanded,
+                    "padding"
+                  )
+                : {}),
+            },
+            children: [
+              
+            ],
+          }),
+          /*#__PURE__*/ _jsxs(Box, {
+            component: "nav",
+            sx: {
               height: "100%",
               display: "flex",
               flexDirection: "column",
@@ -239,14 +260,6 @@ function DashboardLayout(props) {
       !hideNavigation
         ? /*#__PURE__*/ _jsxs(React.Fragment, {
             children: [
-              /*#__PURE__*/ _jsx(Box, {
-                component: "menu",
-                position: "fixed",
-                left: "-25px",
-                bottom: "0px",
-                children: menu(),
-                zIndex: 10000,
-              }),
               /*#__PURE__*/ _jsx(Drawer, {
                 container: layoutRef.current,
                 variant: "temporary",
@@ -301,16 +314,23 @@ function DashboardLayout(props) {
           overflow: "auto",
         },
         children: children,
+        zIndex: 50000
       }),
 
       /*#__PURE__*/ _jsx(Box, {
         position: "fixed",
-        right: "12px",
+        left: "12px",
         bottom: "5px",
         children: /*#__PURE__*/ _jsx(SidebarFooterSlot, {
           ...slotProps?.sidebarFooter,
         }),
-        zIndex: 1,
+        zIndex: 9999999999,
+      }), /*#__PURE__*/ _jsx(Box, {
+        position: "fixed",
+        left: "12px",
+        top: "5px",
+        children: menu(),
+        zIndex: 9999999999,
       }),
     ],
   });
