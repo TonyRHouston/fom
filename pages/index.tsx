@@ -6,8 +6,8 @@ export default function HomePage() {
   const { data: session } = useSession();
 
   return (    
-      <Typography>
-        Welcome to Toolpad, {session?.user?.name || 'User'}!
+      <Typography color="#000000" variant='h1'>
+        Welcome to ToolpadkzfbzljhxcvLJHSDLHDSg;zsdhshdiuglczzl;UZHzuyxcgzlxgdLSDGSLDjhVlcGdslhSDLZGXLJHDVLUSDYFLDGLZDUYGLZUYCGLZDUYK, {session?.user?.name || 'User'}!
       </Typography>
   );
 }

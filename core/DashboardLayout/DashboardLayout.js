@@ -13,7 +13,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuIcon from "@mui/icons-material/Menu";
+import Card from '@mui/material/Card';
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+import Copyright from "../../components/Copyright";
 import {
   BrandingContext,
   NavigationContext,
@@ -305,16 +307,20 @@ function DashboardLayout(props) {
           })
         : null,
 
-      /*#__PURE__*/ _jsx(Box, {
+      /*#__PURE__*/ _jsx(Card, {
         component: "main",
+
         sx: {
+          overflowWrap: "break-word",
+          p:2,
           display: "flex",
           flexDirection: "column",
           flex: 1,
           overflow: "auto",
+
         },
-        children: children,
-        zIndex: 50000
+        children: [children, <Copyright />],
+        
       }),
 
       /*#__PURE__*/ _jsx(Box, {
@@ -324,14 +330,15 @@ function DashboardLayout(props) {
         children: /*#__PURE__*/ _jsx(SidebarFooterSlot, {
           ...slotProps?.sidebarFooter,
         }),
-        zIndex: 9999999999,
+        zIndex: 1250,
       }), /*#__PURE__*/ _jsx(Box, {
         position: "fixed",
-        left: "12px",
+        left: "10px",
         top: "5px",
         children: menu(),
-        zIndex: 9999999999,
-      }),
+        zIndex: 99999,
+      }), 
+
     ],
   });
 }
