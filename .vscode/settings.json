@@ -24,7 +24,8 @@
         "core/README.md": true,
         "core/package.json": true,
         "core/LICENSE": true,
-        "core/CHANGELOG.md": true
+        "core/CHANGELOG.md": true,
+        "app/api/auth/[...nextAuth]": true
     },
     "hide-files.files": [
         ".next",
@@ -45,6 +46,7 @@
         "core/README.md",
         "core/package.json",
         "core/LICENSE",
-        "core/CHANGELOG.md"
+        "core/CHANGELOG.md",
+        "app/api/auth/[...nextAuth]"
     ]
 }
