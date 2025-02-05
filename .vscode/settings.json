@@ -19,13 +19,10 @@
         "next-env.d.ts": true,
         "next.config.mjs": true,
         ".env.local": true,
-        "core/node_modules": true,
         "core/tsconfig.json.tsbuildinfo": true,
-        "core/README.md": true,
         "core/package.json": true,
         "core/LICENSE": true,
-        "core/CHANGELOG.md": true,
-        "app/api/auth/[...nextAuth]": true
+        "app/api/auth/[...nextAuth]/route.ts": true
     },
     "hide-files.files": [
         ".next",
@@ -41,12 +38,9 @@
         "next-env.d.ts",
         "next.config.mjs",
         ".env.local",
-        "core/node_modules",
         "core/tsconfig.json.tsbuildinfo",
-        "core/README.md",
         "core/package.json",
         "core/LICENSE",
-        "core/CHANGELOG.md",
-        "app/api/auth/[...nextAuth]"
+        "app/api/auth/[...nextAuth]/route.ts"
     ]
 }

@@ -126,10 +126,11 @@ function Account(props) {
         _Divider || (_Divider = /*#__PURE__*/_jsx(Divider, {})), 
         /*#__PURE__*/_jsx(AccountPopoverFooter, {
           direction: "row",
-        sx:{                justifyContent: "space-between",},
+        sx:{          justifyContent: "space-between",},
           children: [/*#__PURE__*/_jsx(SignOutButton, {
             ...slotProps?.signOutButton
           }),/*#__PURE__*/_jsx(OrdersButton, {
+            sx:{        p:1,  },
             ...slotProps?.signOutButton
           })]
         })]

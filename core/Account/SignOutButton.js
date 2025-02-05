@@ -36,7 +36,8 @@ function SignOutButton(props) {
         filter: 'opacity(1)'
       }
     },
-    startIcon: _LogoutIcon || (_LogoutIcon = /*#__PURE__*/_jsx(LogoutIcon, {})),
+    startIcon: _LogoutIcon || (_LogoutIcon = /*#__PURE__*/_jsx(LogoutIcon, { 
+    })),
     ...props,
     children: localeText.signOutLabel
   });

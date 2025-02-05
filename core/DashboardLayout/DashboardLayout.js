@@ -158,26 +158,6 @@ function DashboardLayout(props) {
       /*#__PURE__*/ _jsxs(React.Fragment, {
         children: [
           /*#__PURE__*/ _jsxs(Box, {
-            sx: {
-              height: "10%",
-              width: isMini ? 64 : sidebarExpandedWidth,
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              overflow: "hidden",
-              pt: 2,
-              ...(hasDrawerTransitions
-                ? getDrawerSxTransitionMixin(
-                    isNavigationFullyExpanded,
-                    "padding"
-                  )
-                : {}),
-            },
-            children: [
-              
-            ],
-          }),
-          /*#__PURE__*/ _jsxs(Box, {
             component: "nav",
             sx: {
               height: "100%",
@@ -325,22 +305,26 @@ function DashboardLayout(props) {
 
       /*#__PURE__*/ _jsx(Box, {
         position: "fixed",
-        left: "12px",
-        bottom: "5px",
+        right: "45px",
+        bottom: "1px",
         children: /*#__PURE__*/ _jsx(SidebarFooterSlot, {
           ...slotProps?.sidebarFooter,
         }),
         zIndex: theme.zIndex.drawer + 2,
-      }), /*#__PURE__*/ _jsx(Box, {
+      }), 
+      
+      /*#__PURE__*/ _jsx(Box, {
         position: "fixed",
-        left: "10px",
-        top: "5px",
+        right: "13px",
+        top: "10px",
         children: getMenuIcon(),
         zIndex: theme.zIndex.drawer + 2,
-      }), /*#__PURE__*/ _jsx(Box, {
+      }),
+      
+      /*#__PURE__*/ _jsx(Box, {
         position: "fixed",
         right: "10px",
-        top: "5px",
+        bottom: "10px",
         children: ModeSwitch(),
         zIndex: theme.zIndex.drawer + 2,
       }), 
