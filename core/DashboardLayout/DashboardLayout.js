@@ -179,8 +179,7 @@ function DashboardLayout(props) {
                 isFullyExpanded: isNavigationFullyExpanded,
                 hasDrawerTransitions: hasDrawerTransitions,
                 selectedItemId: selectedItemIdRef.current,
-              }), 
-              
+              }),
             ],
           }),
         ],
@@ -301,7 +300,16 @@ function DashboardLayout(props) {
                 },
                 ...getDrawerSharedSx(isMobileMini, false),
               },
-              children: [getDrawerContent(isMobileMini, "tablet")],
+              children: [
+                getDrawerContent(isMobileMini, "tablet"),
+                /*#__PURE__*/ _jsx(Box, {
+                  position: "relative",
+                  bottom: 0,
+                  width: "100%",
+                  height: "10%",
+                  color: "text.secondary",
+                }),
+              ],
             }),
             /*#__PURE__*/ _jsx(Drawer, {
               variant: "permanent",
@@ -314,6 +322,14 @@ function DashboardLayout(props) {
               },
               children: [
                 getDrawerContent(isDesktopMini, "desktop"),
+
+                /*#__PURE__*/ _jsx(Box, {
+                  position: "relative",
+                  bottom: 0,
+                  width: "100%",
+                  height: "5%",
+                  color: "text.secondary",
+                }),
                 logoLoad(theme.zIndex.drawer + 2),
               ],
             }),
