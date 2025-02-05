@@ -3,6 +3,7 @@ const TOOLPAD_CORE_DEFAULT_LOCALE_TEXT = {
   signInLabel: 'Sign In',
   signOutLabel: 'Sign Out',
   // Account Preview
-  iconButtonAriaLabel: 'Current User'
+  iconButtonAriaLabel: 'Current User',
+  checkoutLabel: 'Checkout',
 };
 export default TOOLPAD_CORE_DEFAULT_LOCALE_TEXT;

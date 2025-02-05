@@ -6,6 +6,7 @@ import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import { SignInButton } from "./SignInButton.js";
 import { SignOutButton } from "./SignOutButton.js";
+import { OrdersButton } from "./OrdersButton.js";
 import { AccountPreview } from "./AccountPreview.js";
 import { AccountPopoverHeader } from "./AccountPopoverHeader.js";
 import { AccountPopoverFooter } from "./AccountPopoverFooter.js";
@@ -128,7 +129,7 @@ function Account(props) {
         sx:{                justifyContent: "space-between",},
           children: [/*#__PURE__*/_jsx(SignOutButton, {
             ...slotProps?.signOutButton
-          }),/*#__PURE__*/_jsx(SignOutButton, {
+          }),/*#__PURE__*/_jsx(OrdersButton, {
             ...slotProps?.signOutButton
           })]
         })]

@@ -4,3 +4,4 @@ export * from "./AccountPopoverHeader.js";
 export * from "./AccountPopoverFooter.js";
 export * from "./SignOutButton.js";
 export * from "./SignInButton.js";
+export * from "./OrdersButton.js";

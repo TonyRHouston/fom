@@ -1,0 +1,54 @@
+var _LogoutIcon;
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import Button from '@mui/material/Button';
+import ShoppingCartCheckout from '@mui/icons-material/ShoppingCartCheckout';
+import { AuthenticationContext } from "../AppProvider/AppProvider.js";
+import { useLocaleText } from "../shared/locales/LocaleContext.js";
+import { jsx as _jsx } from "react/jsx-runtime";
+/**
+ *
+ * Demos:
+ *
+ * - [Account](https://mui.com/toolpad/core/react-account/)
+ *
+ * API:
+ *
+ * - [SignOutButton API](https://mui.com/toolpad/core/api/sign-out-button)
+ */
+function OrdersButton(props) {
+  const authentication = React.useContext(AuthenticationContext);
+  const localeText = useLocaleText();
+  return /*#__PURE__*/_jsx(Button, {
+    disabled: !authentication,
+    variant: "outlined",
+    size: "small",
+    disableElevation: true,
+    onClick: authentication?.signOut,
+         p: 1,
+    sx: {
+      p:1,
+      textTransform: 'capitalize',
+      fontWeight: 'normal',
+      filter: 'opacity(0.9)',
+      transition: 'filter 0.2s ease-in',
+      '&:hover': {
+        filter: 'opacity(1)'
+      }
+    },
+    startIcon: _LogoutIcon || (_LogoutIcon = /*#__PURE__*/_jsx(ShoppingCartCheckout, {})),
+    ...props,
+    children: localeText.checkoutLabel
+  });
+}
+process.env.NODE_ENV !== "production" ? OrdersButton.propTypes /* remove-proptypes */ = {
+  // ┌────────────────────────────── Warning ──────────────────────────────┐
+  // │ These PropTypes are generated from the TypeScript type definitions. │
+  // │ To update them, edit the TypeScript types and run `pnpm proptypes`. │
+  // └─────────────────────────────────────────────────────────────────────┘
+  /**
+   * The content of the component.
+   */
+  children: PropTypes.node
+} : void 0;
+export { OrdersButton };
