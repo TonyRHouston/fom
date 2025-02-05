@@ -154,6 +154,10 @@ function DashboardLayout(props) {
     (isMini, viewport) =>
       /*#__PURE__*/ _jsxs(React.Fragment, {
         children: [
+          /*#__PURE__*/ _jsx(Box, {
+            width: "100%",
+            height: "1%",
+          }),
           /*#__PURE__*/ _jsxs(Box, {
             component: "nav",
             sx: {
@@ -175,8 +179,8 @@ function DashboardLayout(props) {
                 isFullyExpanded: isNavigationFullyExpanded,
                 hasDrawerTransitions: hasDrawerTransitions,
                 selectedItemId: selectedItemIdRef.current,
-              }),
-              ,
+              }), 
+              
             ],
           }),
         ],
@@ -190,6 +194,7 @@ function DashboardLayout(props) {
       slotProps?.sidebarFooter,
     ]
   );
+
   const getDrawerSharedSx = React.useCallback(
     (isMini, isTemporary) => {
       const drawerWidth = isMini ? 64 : sidebarExpandedWidth;
@@ -281,8 +286,10 @@ function DashboardLayout(props) {
                 },
                 ...getDrawerSharedSx(false, true),
               },
-              children: [getDrawerContent(false, "phone"),logoLoad(theme.zIndex.drawer + 2),
-                ],
+              children: [
+                getDrawerContent(false, "phone"),
+                logoLoad(theme.zIndex.drawer + 2),
+              ],
             }),
             /*#__PURE__*/ _jsx(Drawer, {
               variant: "permanent",
@@ -294,8 +301,7 @@ function DashboardLayout(props) {
                 },
                 ...getDrawerSharedSx(isMobileMini, false),
               },
-              children: [getDrawerContent(isMobileMini, "tablet"),
-               ],
+              children: [getDrawerContent(isMobileMini, "tablet")],
             }),
             /*#__PURE__*/ _jsx(Drawer, {
               variant: "permanent",
@@ -306,12 +312,12 @@ function DashboardLayout(props) {
                 },
                 ...getDrawerSharedSx(isDesktopMini, false),
               },
-              children: [logoLoad(theme.zIndex.drawer + 2),
+              children: [
                 getDrawerContent(isDesktopMini, "desktop"),
-                
+                logoLoad(theme.zIndex.drawer + 2),
               ],
             }),
-            ],
+          ],
         })
       : null,
 
@@ -334,20 +340,23 @@ function DashboardLayout(props) {
 
 function logoLoad(zI) {
   return (
-    <Box justifyContent='center' alignItems='center' display='flex' sx={{p:1, height: '75', width: '75', zIndex: zI}}>
-    <img
-      src="https://github.com/TonyRHouston/Webpage/blob/main/darkLogo.png?raw=true"
-      alt="FoM"
-      style={{
-        zIndex: 1000,
-        flex: 1,
-        width: "100%",
-        height: "100%",
-      }}
-    />
-
-  </Box>
-  )
+    <Box
+      justifyContent="center"
+      alignItems="center"
+      display="flex"
+      sx={{ p: 3, height: "75", width: "75", zIndex: zI }}>
+      <img
+        src="https://github.com/TonyRHouston/Webpage/blob/main/darkLogo.png?raw=true"
+        alt="FoM"
+        style={{
+          zIndex: 1000,
+          flex: 1,
+          width: "100%",
+          height: "100%",
+        }}
+      />
+    </Box>
+  );
 }
 
 process.env.NODE_ENV !== "production" ?
