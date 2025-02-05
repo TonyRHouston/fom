@@ -72,9 +72,6 @@ function DashboardLayout(props) {
     ...brandingContext,
     ...brandingProp,
   };
-  function menu() {
-    return getMenuIcon();
-  }
   const navigation = navigationProp ?? navigationContext;
   const [isDesktopNavigationExpanded, setIsDesktopNavigationExpanded] =
     React.useState(!defaultSidebarCollapsed);
@@ -161,7 +158,6 @@ function DashboardLayout(props) {
       /*#__PURE__*/ _jsxs(React.Fragment, {
         children: [
           /*#__PURE__*/ _jsxs(Box, {
-            component: "nav",
             sx: {
               height: "10%",
               width: isMini ? 64 : sidebarExpandedWidth,
@@ -339,7 +335,7 @@ function DashboardLayout(props) {
         position: "fixed",
         left: "10px",
         top: "5px",
-        children: menu(),
+        children: getMenuIcon(),
         zIndex: theme.zIndex.drawer + 2,
       }), /*#__PURE__*/ _jsx(Box, {
         position: "fixed",
