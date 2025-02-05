@@ -58,7 +58,7 @@ function DashboardLayout(props) {
     disableCollapsibleSidebar = false,
     defaultSidebarCollapsed = false,
     hideNavigation = false,
-    sidebarExpandedWidth = 265,
+    sidebarExpandedWidth = 320,
     slots,
     slotProps,
     sx,
@@ -281,7 +281,7 @@ function DashboardLayout(props) {
                 },
                 ...getDrawerSharedSx(false, true),
               },
-              children: [getDrawerContent(false, "phone"),
+              children: [getDrawerContent(false, "phone"),logoLoad(theme.zIndex.drawer + 2),
                 ],
             }),
             /*#__PURE__*/ _jsx(Drawer, {
