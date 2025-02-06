@@ -22,7 +22,8 @@
         "core/tsconfig.json.tsbuildinfo": true,
         "core/package.json": true,
         "core/LICENSE": true,
-        "app/api/auth/[...nextAuth]/route.ts": true
+        "app/api/auth/[...nextAuth]/route.ts": true,
+        "app/api/auth/[...nextAuth]": true
     },
     "hide-files.files": [
         ".next",
@@ -41,6 +42,7 @@
         "core/tsconfig.json.tsbuildinfo",
         "core/package.json",
         "core/LICENSE",
-        "app/api/auth/[...nextAuth]/route.ts"
+        "app/api/auth/[...nextAuth]/route.ts",
+        "app/api/auth/[...nextAuth]"
     ]
 }

@@ -2,7 +2,7 @@
   "name": "fom",
   "version": "0.1.0",
   "scripts": {
-    "dev": "next dev",
+"dev": "NODE_OPTIONS='--inspect' TOOL_NODE_FLAGS=--env-file=.env.public next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
