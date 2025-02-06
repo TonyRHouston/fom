@@ -325,9 +325,17 @@ function DashboardLayout(props) {
           overflowWrap: "break-word",
           p: 1,
           display: "flex",
-          flexDirection: "column",
+     
           flex: 1,
           overflow: "auto",
+          sx: {
+            position: "relative",
+            display: "flex",
+            overflow: "hidden",
+            height: "100vh",
+            width: "100vw",
+            ...sx,
+          },
         },
         children: [         /*#__PURE__*/ _jsx(Box, {
           component: "main",
@@ -340,7 +348,7 @@ function DashboardLayout(props) {
             flex: 1,
             overflow: "auto",
           },
-          children: [children],
+          children: [children, <Copyright />],
         })],
       }),
  

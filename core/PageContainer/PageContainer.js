@@ -53,7 +53,7 @@ function PageContainer(props) {
           display: 'flex',
           flexDirection: 'column'
         },
-        children: [children, <Copyright />]
+        children: [children]
       })]
     })
   });
