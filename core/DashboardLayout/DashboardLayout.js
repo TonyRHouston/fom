@@ -164,6 +164,7 @@ function DashboardLayout(props) {
           /*#__PURE__*/ _jsxs(Box, {
             component: "nav",
             sx: {
+              mr:2,
               height: "80%",
               flexDirection: "column",
               justifyContent: "space-between",
@@ -248,9 +249,12 @@ function DashboardLayout(props) {
 
           /*#__PURE__*/ _jsx(Box, {
             position: "fixed",
-            left: "13px",
+            left: "12px",
             top: "10px",
-            children: getMenuIcon(),
+            children: [
+              getMenuIcon(), 
+              getMenuIcon()
+            ],
             zIndex: theme.zIndex.drawer + 2,
           }),
 
@@ -324,6 +328,7 @@ function DashboardLayout(props) {
         sx: {
           overflowWrap: "break-word",
           p: 1,
+          m:2,
           display: "flex",
      
           flex: 1,

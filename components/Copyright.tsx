@@ -8,11 +8,11 @@ export default function Copyright() {
       variant="body1"
       align="center"
       position="relative"
-      
+  
       sx={{
         fontSize:12,
         color: 'text.secondary',
-        mb:1
+        mb:1,
       }}
     >
       Copyright © Foundation of Manna {new Date().getFullYear()}.
