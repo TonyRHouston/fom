@@ -266,56 +266,57 @@ function DashboardLayout(props) {
           }),
         ],
       }),
-      !hideNavigation ?
-        /*#__PURE__*/ _jsxs(React.Fragment, {
-          children: [
-            /*#__PURE__*/ _jsx(Drawer, {
-              container: layoutRef.current,
-              variant: "temporary",
-              open: isMobileNavigationExpanded,
-              onClose: handleSetNavigationExpanded(false),
-              ModalProps: {
-                keepMounted: true, // Better open performance on mobile.
+
+      /*#__PURE__*/ _jsxs(React.Fragment, {
+        children: [
+          /*#__PURE__*/ _jsx(Drawer, {
+            container: layoutRef.current,
+            variant: "temporary",
+            open: isMobileNavigationExpanded,
+            onClose: handleSetNavigationExpanded(false),
+            ModalProps: {
+              keepMounted: true, // Better open performance on mobile.
+            },
+            sx: {
+              display: {
+                xs: "block",
+                sm: disableCollapsibleSidebar ? "block" : "none",
+                md: "none",
               },
-              sx: {
-                display: {
-                  xs: "block",
-                  sm: disableCollapsibleSidebar ? "block" : "none",
-                  md: "none",
-                },
-                ...getDrawerSharedSx(false, true),
+              ...getDrawerSharedSx(false, true),
+            },
+            children: [
+              getDrawerContent(false, "phone"),
+              logoLoad(theme.zIndex.drawer + 2),
+            ],
+          }),
+
+          /*#__PURE__*/ _jsx(Drawer, {
+            variant: "permanent",
+            sx: {
+              display: {
+                xs: "none",
+                sm: disableCollapsibleSidebar ? "none" : "block",
+                md: "none",
               },
-              children: [
-                getDrawerContent(false, "phone"),
-                logoLoad(theme.zIndex.drawer + 2, isNavigationExpanded),
-              ],
-            }),
-            /*#__PURE__*/ _jsx(Drawer, {
-              variant: "permanent",
-              sx: {
-                display: {
-                  xs: "none",
-                  sm: disableCollapsibleSidebar ? "none" : "block",
-                  md: "none",
-                },
-                ...getDrawerSharedSx(isMobileMini, false),
+              ...getDrawerSharedSx(isMobileMini, false),
+            },
+            children: [getDrawerContent(isMobileMini, "tablet")],
+          }),
+
+          /*#__PURE__*/ _jsx(Drawer, {
+            variant: "permanent",
+            sx: {
+              display: {
+                xs: "none",
+                md: "block",
               },
-              children: [getDrawerContent(isMobileMini, "tablet")],
-            }),
-            /*#__PURE__*/ _jsx(Drawer, {
-              variant: "permanent",
-              sx: {
-                display: {
-                  xs: "none",
-                  md: "block",
-                },
-                ...getDrawerSharedSx(isDesktopMini, false),
-              },
-              children: [getDrawerContent(isDesktopMini, "desktop")],
-            }),
-          ],
-        })
-      : null,
+              ...getDrawerSharedSx(isDesktopMini, false),
+            },
+            children: [getDrawerContent(isDesktopMini, "desktop"),logoLoad(theme.zIndex.drawer + 2)],
+          }),
+        ],
+      }),
 
       /*#__PURE__*/ _jsx(Box, {
         component: "main",
@@ -334,7 +335,7 @@ function DashboardLayout(props) {
   });
 }
 
-function logoLoad(zI, isNavigationExpanded) {
+function logoLoad(zI) {
   return (
     <Box
       justifyContent="center"
@@ -344,7 +345,6 @@ function logoLoad(zI, isNavigationExpanded) {
       <img
         src="https://github.com/TonyRHouston/Webpage/blob/main/darkLogo.png?raw=true"
         alt="FoM"
-        disabled={true}
         style={{
           zIndex: 1000,
           flex: 1,
