@@ -26,7 +26,6 @@ function AccountPopoverFooter(props) {
       justifyContent: 'flex-end',
       ...rest.sx
     },
-
     children: children
   });
 }

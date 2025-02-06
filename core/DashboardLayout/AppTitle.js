@@ -20,7 +20,7 @@ const LogoContainer = styled('div')({
 export function AppTitle(props) {
   const theme = useTheme();
   const defaultTitle = useApplicationTitle();
-  const title = "TETS" //props?.branding?.title ?? defaultTitle;
+  const title = "TETS";
   return /*#__PURE__*/_jsx(Link, {
     href: props?.branding?.homeUrl ?? '/',
     style: {

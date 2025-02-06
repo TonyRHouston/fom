@@ -25,9 +25,7 @@ function SignOutButton(props) {
     size: "small",
     disableElevation: true,
     onClick: authentication?.signOut,
-         p: 1,
     sx: {
-      p:1,
       textTransform: 'capitalize',
       fontWeight: 'normal',
       filter: 'opacity(0.9)',
@@ -36,8 +34,7 @@ function SignOutButton(props) {
         filter: 'opacity(1)'
       }
     },
-    startIcon: _LogoutIcon || (_LogoutIcon = /*#__PURE__*/_jsx(LogoutIcon, { 
-    })),
+    startIcon: _LogoutIcon || (_LogoutIcon = /*#__PURE__*/_jsx(LogoutIcon, {})),
     ...props,
     children: localeText.signOutLabel
   });

@@ -42,7 +42,11 @@ function PageContainer(props) {
         my: 2
       },
       spacing: 2,
-      children: [ /*#__PURE__*/_jsx(Box, {
+      children: [/*#__PURE__*/_jsx(PageHeaderSlot, {
+        title: title,
+        breadcrumbs: breadcrumbs,
+        ...slotProps?.header
+      }), /*#__PURE__*/_jsx(Box, {
         sx: {
           flex: 1,
           display: 'flex',

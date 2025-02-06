@@ -6,7 +6,6 @@ import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import { SignInButton } from "./SignInButton.js";
 import { SignOutButton } from "./SignOutButton.js";
-import { OrdersButton } from "./OrdersButton.js";
 import { AccountPreview } from "./AccountPreview.js";
 import { AccountPopoverHeader } from "./AccountPopoverHeader.js";
 import { AccountPopoverFooter } from "./AccountPopoverFooter.js";
@@ -21,9 +20,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
  * - [Dashboard Layout](https://mui.com/toolpad/core/react-dashboard-layout/)
  * - [Sign-in Page](https://mui.com/toolpad/core/react-sign-in-page/)
  *
- * API:          slots={{
-            popoverContent: CustomMenu,
-          }}
+ * API:
  *
  * - [Account API](https://mui.com/toolpad/core/api/account)
  */
@@ -117,22 +114,13 @@ function Account(props) {
         direction: "column",
         ...slotProps?.popoverContent,
         children: [_AccountPopoverHeader || (_AccountPopoverHeader = /*#__PURE__*/_jsx(AccountPopoverHeader, {
-          children: [/*#__PURE__*/_jsx(AccountPreview, {
+          children: /*#__PURE__*/_jsx(AccountPreview, {
             variant: "expanded"
-          }), /*#__PURE__*/_jsx(SignOutButton, {
+          })
+        })), _Divider || (_Divider = /*#__PURE__*/_jsx(Divider, {})), /*#__PURE__*/_jsx(AccountPopoverFooter, {
+          children: /*#__PURE__*/_jsx(SignOutButton, {
             ...slotProps?.signOutButton
-          })]
-        })), 
-        _Divider || (_Divider = /*#__PURE__*/_jsx(Divider, {})), 
-        /*#__PURE__*/_jsx(AccountPopoverFooter, {
-          direction: "row",
-        sx:{          justifyContent: "space-between",},
-          children: [/*#__PURE__*/_jsx(SignOutButton, {
-            ...slotProps?.signOutButton
-          }),/*#__PURE__*/_jsx(OrdersButton, {
-            sx:{        p:1,  },
-            ...slotProps?.signOutButton
-          })]
+          })
         })]
       })
     })]
