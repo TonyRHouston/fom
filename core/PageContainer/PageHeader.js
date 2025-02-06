@@ -48,28 +48,9 @@ function PageHeader(props) {
     additionalProps: {}
   });
   return /*#__PURE__*/_jsxs(Stack, {
-    children: [/*#__PURE__*/_jsx(Breadcrumbs, {
-      "aria-label": "breadcrumb",
-      children: resolvedBreadcrumbs ? resolvedBreadcrumbs.map((item, index) => {
-        return item.path ? /*#__PURE__*/_jsx(Link, {
-          component: ToolpadLink,
-          underline: "hover",
-          color: "inherit",
-          href: item.path,
-          children: getItemTitle(item)
-        }, index) : /*#__PURE__*/_jsx(Typography, {
-          color: "text.primary",
-          children: getItemTitle(item)
-        }, index);
-      }) : null
-    }), /*#__PURE__*/_jsxs(PageContentHeader, {
-      children: [resolvedTitle ? /*#__PURE__*/_jsx(Typography, {
-        variant: "h4",
-        children: resolvedTitle
-      }) : null, /*#__PURE__*/_jsx(ToolbarComponent, {
-        ...toolbarSlotProps
-      })]
-    })]
+    sx:{
+
+    }
   });
 }
 process.env.NODE_ENV !== "production" ? PageHeader.propTypes /* remove-proptypes */ = {

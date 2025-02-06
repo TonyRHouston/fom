@@ -10,7 +10,7 @@ import { useColorScheme } from '@mui/material/styles';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-export default function ModeSwitch() {
+export default function ModeSwitch(show: boolean) {
   const { mode, setMode } = useColorScheme();
   if (!mode) {
     return null;
@@ -19,6 +19,7 @@ export default function ModeSwitch() {
 
   /*#__PURE__*/ _jsx(IconButton, {
       onClick: () => { setMode(mode === 'dark' ? 'light' : 'dark') },
+      style:{opacity:show===true ? 1 : 0},
       children:   /*#__PURE__*/ _jsx(mode == 'light' ? DarkModeIcon : LightModeIcon, {}),
     })
  

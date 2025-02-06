@@ -157,6 +157,9 @@ function DashboardLayout(props) {
           /*#__PURE__*/ _jsx(Box, {
             width: "100%",
             height: "1%",
+            sx: {
+              pt: 8,
+            },
           }),
           /*#__PURE__*/ _jsxs(Box, {
             component: "nav",
@@ -165,10 +168,6 @@ function DashboardLayout(props) {
               flexDirection: "column",
               justifyContent: "space-between",
               overflow: "auto",
-              pt: 2,
-              ...(hasDrawerTransitions ?
-                getDrawerSxTransitionMixin(isNavigationFullyExpanded, "padding")
-              : {}),
             },
             children: [
               /*#__PURE__*/ _jsx(DashboardSidebarSubNavigation, {
@@ -211,7 +210,6 @@ function DashboardLayout(props) {
           width: drawerWidth,
           boxSizing: "border-box",
           backgroundImage: "none",
-          ...getDrawerWidthTransitionMixin(isNavigationExpanded),
         },
       };
     },
@@ -250,7 +248,7 @@ function DashboardLayout(props) {
 
           /*#__PURE__*/ _jsx(Box, {
             position: "fixed",
-            right: "13px",
+            left: "13px",
             top: "10px",
             children: getMenuIcon(),
             zIndex: theme.zIndex.drawer + 2,
@@ -258,9 +256,9 @@ function DashboardLayout(props) {
 
           /*#__PURE__*/ _jsx(Box, {
             position: "fixed",
-            right: "13px",
-            bottom: "10px",
-            children: ModeSwitch(),
+            left: "270px",
+            bottom: "4px",
+            children: ModeSwitch(isNavigationExpanded),
             zIndex: theme.zIndex.drawer + 2,
           }),
         ],
@@ -300,7 +298,7 @@ function DashboardLayout(props) {
               },
               ...getDrawerSharedSx(isMobileMini, false),
             },
-            children: [getDrawerContent(isMobileMini, "tablet")],
+            children: [getDrawerContent(isMobileMini, "tablet"), fill()],
           }),
 
           /*#__PURE__*/ _jsx(Drawer, {
@@ -312,7 +310,10 @@ function DashboardLayout(props) {
               },
               ...getDrawerSharedSx(isDesktopMini, false),
             },
-            children: [getDrawerContent(isDesktopMini, "desktop"),logoLoad(theme.zIndex.drawer + 2, isNavigationExpanded)],
+            children: [
+              getDrawerContent(isDesktopMini, "desktop"),
+              logoLoad(theme.zIndex.drawer + 2, isNavigationExpanded),
+            ],
           }),
         ],
       }),
@@ -337,7 +338,6 @@ function DashboardLayout(props) {
 function logoLoad(zI, show) {
   return (
     <Box
-
       justifyContent="center"
       alignItems="center"
       display="flex"
@@ -350,13 +350,33 @@ function logoLoad(zI, show) {
           flex: 1,
           width: "100%",
           height: "100%",
-          opacity: show ? 1 : 0
+          opacity: show ? 1 : 0,
         }}
       />
     </Box>
   );
 }
+function fill(zI) {
+  return (
+    <Box
+      justifyContent="center"
+      alignItems="center"
+      display="flex"
+  
+      sx={{ bottom:0, p: 0.5, height: "55px", width: "0", zIndex: zI }}>
+      <input
 
+        style={{
+          zIndex: 1000,
+          flex: 1,
+          width: "100%",
+          height: "100%",
+          opacity:0
+        }}
+      />
+    </Box>
+  );
+}
 process.env.NODE_ENV !== "production" ?
   (DashboardLayout.propTypes /* remove-proptypes */ = {
     // ┌────────────────────────────── Warning ──────────────────────────────┐
