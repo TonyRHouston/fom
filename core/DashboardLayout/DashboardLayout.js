@@ -194,7 +194,7 @@ function DashboardLayout(props) {
 
   const getDrawerSharedSx = React.useCallback(
     (isMini, isTemporary) => {
-      const drawerWidth = isMini ? 64 : sidebarExpandedWidth;
+      const drawerWidth = isMini ? 70 : sidebarExpandedWidth;
       return {
         displayPrint: "none",
         width: drawerWidth,
@@ -237,8 +237,8 @@ function DashboardLayout(props) {
         children: [
           /*#__PURE__*/ _jsx(Box, {
             position: "fixed",
-            left: "11px",
-            bottom: "1px",
+            left: "2px",
+            bottom: "-1px",
             children: /*#__PURE__*/ _jsx(SidebarFooterSlot, {
               ...slotProps?.sidebarFooter,
             }),
@@ -319,7 +319,7 @@ function DashboardLayout(props) {
       }),
 
       /*#__PURE__*/ _jsx(Box, {
-        component: "main",
+
 
         sx: {
           overflowWrap: "break-word",
@@ -329,8 +329,22 @@ function DashboardLayout(props) {
           flex: 1,
           overflow: "auto",
         },
-        children: [children, <Copyright />],
+        children: [         /*#__PURE__*/ _jsx(Box, {
+          component: "main",
+
+          sx: {
+            overflowWrap: "break-word",
+            p: 1,
+            display: "flex",
+            flexDirection: "column",
+            flex: 1,
+            overflow: "auto",
+          },
+          children: [children],
+        })],
       }),
+ 
+    
     ],
   });
 }
@@ -356,14 +370,14 @@ function logoLoad(zI, show) {
     </Box>
   );
 }
-function fill(zI) {
+function fill() {
   return (
     <Box
       justifyContent="center"
       alignItems="center"
       display="flex"
   
-      sx={{ bottom:0, p: 0.5, height: "55px", width: "0", zIndex: zI }}>
+      sx={{ bottom:0, p: 0.5, height: "55px", width: "0"}}>
       <input
 
         style={{

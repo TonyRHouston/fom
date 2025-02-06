@@ -7,6 +7,7 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import { PageHeader } from "./PageHeader.js";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import Copyright from "../../components/Copyright";
 /**
  * A container component to provide a title and breadcrumbs for your pages.
  *
@@ -52,7 +53,7 @@ function PageContainer(props) {
           display: 'flex',
           flexDirection: 'column'
         },
-        children: children
+        children: [children, <Copyright />]
       })]
     })
   });

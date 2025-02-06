@@ -14,6 +14,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 
 import theme from '../theme';
 
+
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
   requireAuth?: boolean;

@@ -5,19 +5,16 @@ import MuiLink from '@mui/material/Link';
 export default function Copyright() {
   return (
     <Typography
-      variant="body2"
+      variant="body1"
       align="center"
-      position="sticky"
+      position="relative"
       sx={{
+        mt:15,
         color: 'text.secondary',
-        bottom: 0,
+        bottom: 5,
       }}
     >
-      {'Copyright © '}
-      <MuiLink color="inherit" href="https://mui.com/">
-        Your Website
-      </MuiLink>{' '}
-      {new Date().getFullYear()}.
+      Copyright © Foundation of Manna {new Date().getFullYear()}.
     </Typography>
   );
 }
