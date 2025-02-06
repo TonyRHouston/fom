@@ -7,6 +7,7 @@ export default function Copyright() {
     <Typography
       variant="body2"
       align="center"
+      position="sticky"
       sx={{
         color: 'text.secondary',
         bottom: 0,

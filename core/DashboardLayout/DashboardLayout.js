@@ -156,13 +156,12 @@ function DashboardLayout(props) {
         children: [
           /*#__PURE__*/ _jsx(Box, {
             width: "100%",
-            height: "4%",
+            height: "1%",
           }),
           /*#__PURE__*/ _jsxs(Box, {
             component: "nav",
             sx: {
               height: "80%",
-              display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
               overflow: "auto",
@@ -287,7 +286,7 @@ function DashboardLayout(props) {
             },
             children: [
               getDrawerContent(false, "phone"),
-              logoLoad(theme.zIndex.drawer + 2),
+              logoLoad(theme.zIndex.drawer + 2, isNavigationExpanded),
             ],
           }),
 
@@ -313,7 +312,7 @@ function DashboardLayout(props) {
               },
               ...getDrawerSharedSx(isDesktopMini, false),
             },
-            children: [getDrawerContent(isDesktopMini, "desktop"),logoLoad(theme.zIndex.drawer + 2)],
+            children: [getDrawerContent(isDesktopMini, "desktop"),logoLoad(theme.zIndex.drawer + 2, isNavigationExpanded)],
           }),
         ],
       }),
@@ -335,9 +334,10 @@ function DashboardLayout(props) {
   });
 }
 
-function logoLoad(zI) {
+function logoLoad(zI, show) {
   return (
     <Box
+
       justifyContent="center"
       alignItems="center"
       display="flex"
@@ -350,6 +350,7 @@ function logoLoad(zI) {
           flex: 1,
           width: "100%",
           height: "100%",
+          opacity: show ? 1 : 0
         }}
       />
     </Box>
