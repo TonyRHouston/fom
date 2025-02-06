@@ -238,7 +238,32 @@ function DashboardLayout(props) {
           displayPrint: "none",
         },
         children: [
+          /*#__PURE__*/ _jsx(Box, {
+            position: "fixed",
+            left: "11px",
+            bottom: "1px",
+            children: /*#__PURE__*/ _jsx(SidebarFooterSlot, {
+              ...slotProps?.sidebarFooter,
+            }),
+            disabled: true,
+            zIndex: theme.zIndex.drawer + 2,
+          }),
 
+          /*#__PURE__*/ _jsx(Box, {
+            position: "fixed",
+            right: "13px",
+            top: "10px",
+            children: getMenuIcon(),
+            zIndex: theme.zIndex.drawer + 2,
+          }),
+
+          /*#__PURE__*/ _jsx(Box, {
+            position: "fixed",
+            right: "13px",
+            bottom: "10px",
+            children: ModeSwitch(),
+            zIndex: theme.zIndex.drawer + 2,
+          }),
         ],
       }),
       !hideNavigation ?
