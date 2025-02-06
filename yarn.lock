@@ -1066,20 +1066,9 @@
   dependencies:
     tslib "^2.8.0"
 
-"@toolpad/core@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@toolpad/core/-/core-0.12.0.tgz#1a69a28bf49ef4c18b681b6001d96bfc88b7b4c3"
-  integrity sha512-2nzy6Y16nIvZspfdeKJqp70ZKTL4l3DVGe4zpjKi60UoRDYhQHTtwcXlTPiKYw/sCXjT8oa7svNaVD2GAI8Hfg==
-  dependencies:
-    "@babel/runtime" "^7.26.0"
-    "@mui/lab" "6.0.0-beta.22"
-    "@mui/utils" "6.3.1"
-    "@toolpad/utils" "0.12.0"
-    "@vitejs/plugin-react" "4.3.4"
-    client-only "^0.0.1"
-    invariant "2.2.4"
-    path-to-regexp "6.3.0"
-    prop-types "15.8.1"
+"@toolpad/core@link:./core":
+  version "0.0.0"
+  uid ""
 
 "@toolpad/utils@0.12.0":
   version "0.12.0"

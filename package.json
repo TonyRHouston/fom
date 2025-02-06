@@ -17,7 +17,7 @@
     "@mui/material": "^6",
     "@mui/material-nextjs": "^6",
     "@nearpaydev/react-native-nearpay-sdk": "https://github.com/nearpayio/nearpay-react-native-sdk.git#main",
-    "@toolpad/core": "^0.12.0",
+    "@toolpad/core": "link:./core",
     "jsonwebtoken": "^9.0.2",
     "next": "^15",
     "next-auth": "5.0.0-beta.25",
