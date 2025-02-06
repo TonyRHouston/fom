@@ -156,12 +156,12 @@ function DashboardLayout(props) {
         children: [
           /*#__PURE__*/ _jsx(Box, {
             width: "100%",
-            height: "1%",
+            height: "4%",
           }),
           /*#__PURE__*/ _jsxs(Box, {
             component: "nav",
             sx: {
-              height: "100%",
+              height: "80%",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
@@ -287,7 +287,7 @@ function DashboardLayout(props) {
               },
               children: [
                 getDrawerContent(false, "phone"),
-                logoLoad(theme.zIndex.drawer + 2),
+                logoLoad(theme.zIndex.drawer + 2, isNavigationExpanded),
               ],
             }),
             /*#__PURE__*/ _jsx(Drawer, {
@@ -300,16 +300,7 @@ function DashboardLayout(props) {
                 },
                 ...getDrawerSharedSx(isMobileMini, false),
               },
-              children: [
-                getDrawerContent(isMobileMini, "tablet"),
-                /*#__PURE__*/ _jsx(Box, {
-                  position: "relative",
-                  bottom: 0,
-                  width: "100%",
-                  height: "10%",
-                  color: "text.secondary",
-                }),
-              ],
+              children: [getDrawerContent(isMobileMini, "tablet")],
             }),
             /*#__PURE__*/ _jsx(Drawer, {
               variant: "permanent",
@@ -320,18 +311,7 @@ function DashboardLayout(props) {
                 },
                 ...getDrawerSharedSx(isDesktopMini, false),
               },
-              children: [
-                getDrawerContent(isDesktopMini, "desktop"),
-
-                /*#__PURE__*/ _jsx(Box, {
-                  position: "relative",
-                  bottom: 0,
-                  width: "100%",
-                  height: "5%",
-                  color: "text.secondary",
-                }),
-                logoLoad(theme.zIndex.drawer + 2),
-              ],
+              children: [getDrawerContent(isDesktopMini, "desktop")],
             }),
           ],
         })
@@ -342,7 +322,7 @@ function DashboardLayout(props) {
 
         sx: {
           overflowWrap: "break-word",
-          p: 2,
+          p: 1,
           display: "flex",
           flexDirection: "column",
           flex: 1,
@@ -354,16 +334,17 @@ function DashboardLayout(props) {
   });
 }
 
-function logoLoad(zI) {
+function logoLoad(zI, isNavigationExpanded) {
   return (
     <Box
       justifyContent="center"
       alignItems="center"
       display="flex"
-      sx={{ p: 3, height: "75", width: "75", zIndex: zI }}>
+      sx={{ p: 0.5, height: "75", width: "75", zIndex: zI }}>
       <img
         src="https://github.com/TonyRHouston/Webpage/blob/main/darkLogo.png?raw=true"
         alt="FoM"
+        disabled={true}
         style={{
           zIndex: 1000,
           flex: 1,
