@@ -11,9 +11,9 @@ import type { AppProps } from 'next/app';
 import type { Navigation } from '@toolpad/core/AppProvider';
 import { SessionProvider, signIn, signOut, useSession } from 'next-auth/react';
 import LinearProgress from '@mui/material/LinearProgress';
-
+import ReactDOM from 'react-dom/client';
 import theme from '../theme';
-
+import { MetaMaskProvider } from '@metamask/sdk-react';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
@@ -133,6 +133,16 @@ function AppLayout({ children }: { children: React.ReactNode }) {
   const { data: session } = useSession();
   return (
     <React.Fragment>
+          <MetaMaskProvider debug={false} sdkOptions={{
+      logging:{
+          developerMode: false,
+        },
+        communicationServerUrl: process.env.REACT_APP_COMM_SERVER_URL,
+        checkInstallationImmediately: false, // This will automatically connect to MetaMask on page load
+        dappMetadata: {
+          name: "Foundation of Manna",
+        }
+    }}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
@@ -145,6 +155,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
       >
         {children}
       </NextAppProvider>
+      </MetaMaskProvider>
     </React.Fragment>
   );
 }

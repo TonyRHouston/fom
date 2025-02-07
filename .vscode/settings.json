@@ -8,7 +8,6 @@
         "**/Thumbs.db": true,
         ".next": true,
         ".vscode": true,
-        "node_modules": true,
         "tsconfig.json": true,
         "yarn.lock": true,
         ".gitignore": true,
@@ -28,7 +27,6 @@
     "hide-files.files": [
         ".next",
         ".vscode",
-        "node_modules",
         "tsconfig.json",
         "yarn.lock",
         ".gitignore",
