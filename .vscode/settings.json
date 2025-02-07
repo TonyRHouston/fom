@@ -44,5 +44,8 @@
         "core/LICENSE",
         "app/api/auth/[...nextAuth]/route.ts",
         "app/api/auth/[...nextAuth]"
-    ]
+    ],
+    "debug.javascript.defaultRuntimeExecutable": {
+        "pwa-node": "node"
+    }
 }
